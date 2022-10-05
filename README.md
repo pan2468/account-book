@@ -1,7 +1,8 @@
 ## 📌 AccountBook
 
 ###  프로젝트 목적 
-회원(Member)와 가계부(AccountBook) 매핑하여 RESTAPI 구현하기
++ 고객은 본인의 소비내역을 기록/관리하기
++ 회원(Member)와 가계부(AccountBook) 매핑하여 RESTAPI 구현하기
 
 ### 📌 요구사항 Notion
 

@@ -1,4 +1,4 @@
-## 📌 Author-Book
+## 📌 AccountBook
 
 ###  프로젝트 목적 
 회원(Member)와 가계부(AccountBook) 매핑하여 RESTAPI 구현하기

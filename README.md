@@ -217,6 +217,98 @@ public class HelloController {
 </div>
 </details>
 
+<details>
+<summary>도메인 모델 설계</summary>
+<div markdown="1">
+
+#### 1. Member, AccountBook Entity 생성하기
+
+##### Member.class
+
+~~~
+package com.springboot.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "member")
+@Setter @Getter
+public class Member {
+
+    @Id
+    @Column(name = "member_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(unique = true)
+    private String email;
+
+    private String password;
+
+    //private LocalDateTime memberData;
+
+
+}
+~~~
++ Lombok 라이브러리 통해서 @Getter, @Setter 이용하기
++ @Entity 어노테이션 선언하여 도메인 모델 생성하기
++ @Table(name="member") 테이블 이름 지정하기 
++ 컬럼값은 id, email, password 설정
+
+##### AccountBook.class
+
+~~~
+package com.springboot.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "account")
+@Setter @Getter
+public class AccountBook {
+
+    @Id
+    @Column(name = "account_book_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private int money;
+
+    private String memo;
+
+    //private LocalDateTime bookDate;
+
+}
+
+~~~
++ Lombok 라이브러리 통해서 @Getter, @Setter 이용하기
++ @Entity 어노테이션 선언하여 도메인 모델 생성하기
++ @Table(name="member") 테이블 이름 지정하기 
++ 컬럼값은 id, money, memo 설정
+
+##### application.properties
+
+~~~
+spring.jpa.hibernate.ddl-auto=create // 추가
+~~~
++ Run 실행하여 콘솔 로그에서 Entity Table 생성되는 것을 확인할 수 있음
+<br>
+
+<img src="https://user-images.githubusercontent.com/58936137/194365720-63465b82-14cf-41f2-8eb3-8e17c6ce442b.png" width="400px" height="500px">
+
+
+
+</div>
+</details>
+
 ### 8. 화면 구성도
 
   

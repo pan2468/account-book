@@ -95,7 +95,7 @@ HelloControllerTest.class
  
  #### build.gradle
  ~~~
- runtimeOnly 'mysql:mysql-connector-java'
+ runtimeOnly 'mysql:mysql-connector-java' //추가하여 해결
  ~~~
 </div>
 </details> 

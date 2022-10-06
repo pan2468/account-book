@@ -100,6 +100,15 @@ HelloControllerTest.class
 </div>
 </details> 
 
+<details>
+<summary>Entity 도메인 실행오류</summary>
+<div markdown="1">
+
+- Caused by: java.sql.SQLSyntaxErrorException: Specified key was too long; max key length is 1000 bytes
+
+</div>
+</details> 
+
 ### 💡 기술적 issue 해결 과정
 <details>
 <summary>HelloController 테스트 실행</summary>

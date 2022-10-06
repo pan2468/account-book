@@ -142,6 +142,9 @@ public class HelloControllerTest {
 + @WebMvcTest 어노테이션 선언 후 웹 MVC 기반으로 테스트 코드 실행
 + @Autowired 외부 객체 Bean 찿아 의존성 주입하기  
 + @Test 지정한 메소드 테스트  
+
+ <br>
+ <img src="https://user-images.githubusercontent.com/58936137/194327470-35ce7e59-3d03-40df-839f-c333a52b6cb2.png" width="400px" height="350px">
  
  </div>
 </details>

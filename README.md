@@ -94,8 +94,9 @@ HelloControllerTest.class
  1. controller 패키지 생성 > HelloController.class 생성하기 <br>
  <img src="https://user-images.githubusercontent.com/58936137/194320720-e025ded6-cdc2-46e4-8695-1dc4e750cd31.png" width="200px" height="50px">
  <br>
+ 
  #### 2. Test 코드 작성하기<br>
- Ctrl + Shift + T > Create New Test 클릭 > Create Test 설정 후 OK버튼 클릭
+ Ctrl + Shift + T > Create New Test 클릭 > Create Test 설정 후 OK버튼 클릭 <br>
  <img src="https://user-images.githubusercontent.com/58936137/194322496-9fadcf62-01c9-4660-a35b-367ef7d6e6cf.png" width="350px" height="300px"> 
  
  </div>

@@ -144,7 +144,7 @@ public class HelloControllerTest {
 + @Test 지정한 메소드 테스트  
 
  <br>
- <img src="https://user-images.githubusercontent.com/58936137/194327470-35ce7e59-3d03-40df-839f-c333a52b6cb2.png" width="700px" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194327470-35ce7e59-3d03-40df-839f-c333a52b6cb2.png" width="900px" height="150px">
  
  </div>
 </details>

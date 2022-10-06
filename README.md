@@ -149,6 +149,40 @@ public class HelloControllerTest {
  </div>
 </details>
 
+<details>
+<summary>HelloController.class 실행</summary>
+<div markdown="1">
+
+ #### HelloController 코드 작성
+ 
+ ##### HelloController.class
+ ~~~
+ package com.springboot.accountbook.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/hello")
+    public String hello(){
+
+        return "hello";
+    }
+}
+
+ ~~~
+ + @RestController 어노테이션 선언 후 모든 메소드 JSON 기능을 주어 return 반환
+ + @GetMapping() 지정한 주소 찿아 접근
+
+ #### 크롬 View 화면
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194329238-7691d770-a70c-4542-a84c-0b7edc18d00d.png" width="300px" height="300px">
+ 
+</div>
+</details>
+
 ### 8. 화면 구성도
 
   

@@ -85,7 +85,7 @@ HelloControllerTest.class
 </details> 
 
 
-### 7. 기술적 issue 해결 과정
+### 💡 기술적 issue 해결 과정
 <details>
 <summary>HelloController 테스트 실행</summary>
 <div markdown="1">

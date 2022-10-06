@@ -98,7 +98,9 @@ HelloControllerTest.class
  #### 2. Create Test<br>
  Ctrl + Shift + T > Create New Test 클릭 > Create Test 설정 후 OK버튼 클릭 <br><br>
  <img src="https://user-images.githubusercontent.com/58936137/194322496-9fadcf62-01c9-4660-a35b-367ef7d6e6cf.png" width="350px" height="300px"> 
- + Testing library - JUnit5 설정
+ <br>
+ <img src="https://user-images.githubusercontent.com/58936137/194325201-df1e9e6c-b893-40ec-8a15-722e3994c7dc.png" width="200px" height="50px">
+ 
  </div>
 </details>
 

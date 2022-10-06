@@ -17,7 +17,7 @@
 + TDD
 
 ### 4. IDE 개발환경
-+ <a src="https://www.jetbrains.com/ko-kr/idea/">InteliJ IDEA </a>
++ <a href="https://www.jetbrains.com/ko-kr/idea/">InteliJ IDEA </a>
 
 ### 5. MSA 아키텍처
 

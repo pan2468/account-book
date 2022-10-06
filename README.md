@@ -84,6 +84,14 @@ HelloControllerTest.class
 </div>
 </details> 
 
+<details>
+<summary>톰캣 실행 오류</summary>
+<div markdown="1">
+
+- Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+
+</div>
+</details> 
 
 ### 💡 기술적 issue 해결 과정
 <details>

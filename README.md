@@ -30,6 +30,54 @@
 -java.lang.AssertionError: Response content 
  Expected :hello
  Actual   :Hello World
+ 
+ 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
+ 
+ ### 기존코드 
+ ~~~
+ HelloController.class
+    
+ @GetMapping("/hello")
+ public String hello(){
+
+   return "Hello World";
+ }
+ 
+ 
+ HelloControllerTest.class
+ @Test
+ public void hello() throws Exception{
+ String hello = "hello";
+
+  mvc.perform(get("/hello"))
+              .andExpect(status().isOk())
+              .andExpect(content().string(hello));
+  }
+ 
+ 
+ ~~~
+ 
+ ### 개선코드
+ ~~~
+ HelloController.class
+    
+ @GetMapping("/hello")
+ public String hello(){
+
+   return "hello"; // 변경
+ }
+ 
+ 
+ HelloControllerTest.class
+ @Test
+ public void hello() throws Exception{
+ String hello = "hello";
+
+  mvc.perform(get("/hello"))
+              .andExpect(status().isOk())
+              .andExpect(content().string(hello));
+  }
+ ~~~
 
 </div>
 </details> 

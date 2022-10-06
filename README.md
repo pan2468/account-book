@@ -91,12 +91,12 @@ HelloControllerTest.class
 <div markdown="1">
 
  #### 1. 패키지 생성 <br>
- controller 패키지 생성 > HelloController.class 생성<br>
+ controller 패키지 생성 > HelloController.class 생성<br><br>
  <img src="https://user-images.githubusercontent.com/58936137/194320720-e025ded6-cdc2-46e4-8695-1dc4e750cd31.png" width="200px" height="50px">
  <br>
  
  #### 2. Create Test<br>
- Ctrl + Shift + T > Create New Test 클릭 > Create Test 설정 후 OK버튼 클릭 <br>
+ Ctrl + Shift + T > Create New Test 클릭 > Create Test 설정 후 OK버튼 클릭 <br><br>
  <img src="https://user-images.githubusercontent.com/58936137/194322496-9fadcf62-01c9-4660-a35b-367ef7d6e6cf.png" width="350px" height="300px"> 
  
  </div>

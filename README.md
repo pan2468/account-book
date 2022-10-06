@@ -5,7 +5,7 @@
 + 회원(Member)와 가계부(AccountBook) 매핑하여 RESTAPI 구현하기
 
 ### 2. 제작기간 / 참여인원
-+ 제작기간: 2022-10-04 ~ 진행
++ 제작기간: 2022-10-04 ~ 2022-10-11
 + 참여인원: 개인 프로젝트
 
 ### 3. 사용 기술(기술스택)
@@ -31,7 +31,7 @@
  Expected :hello
  Actual   :Hello World
  
- 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
+- 해결 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
  
  ### 기존코드 
  ~~~
@@ -84,6 +84,40 @@ HelloControllerTest.class
 </div>
 </details> 
 
+<details>
+<summary>톰캣 실행 오류</summary>
+<div markdown="1">
+
+- Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+- org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+ 
+- 해결 원인: runtimeOnly 'mysql:mysql-connector-java' 없어 발생
+ 
+ #### build.gradle
+ ~~~
+ runtimeOnly 'mysql:mysql-connector-java' //추가하여 해결
+ ~~~
+</div>
+</details> 
+
+<details>
+<summary>H2 실행오류</summary>
+<div markdown="1">
+
+- Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+- 해결 원인: application.properties MySQL 설정 안하여 오류 발생
+
+### 실행오류 개선 
+#### application.properties
+ ~~~
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/account_book?serverTimezone=UTC
+
+spring.datasource.username=root
+spring.datasource.password=1234
+ ~~~
+</div>
+</details> 
 
 ### 💡 기술적 issue 해결 과정
 <details>

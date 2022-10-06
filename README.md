@@ -299,7 +299,7 @@ public class AccountBook {
 ~~~
 spring.jpa.hibernate.ddl-auto=create // 추가
 ~~~
-+ Run 실행하여 콘솔 로그에서 Entity Table 생성되는 것을 확인할 수 있습니다.
++ application.properties 설정하여 Run 실행하여 console.log에서 Entity Table 생성되는 것을 확인할 수 있습니다.
 <br>
 
 <img src="https://user-images.githubusercontent.com/58936137/194365720-63465b82-14cf-41f2-8eb3-8e17c6ce442b.png" width="400px" height="500px">

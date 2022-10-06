@@ -107,6 +107,7 @@ HelloControllerTest.class
 - Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 - 해결 원인: application.properties MySQL 설정 안하여 오류 발생
 
+### 실행오류 개선 
 #### application.properties
  ~~~
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver

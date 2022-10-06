@@ -90,7 +90,7 @@ HelloControllerTest.class
 <summary>HelloController 테스트 실행</summary>
 <div markdown="1">
 
- #### 1. 패키지 생성 <br>
+ #### 1. controller 패키지 생성하기 <br>
  controller 패키지 생성 > HelloController.class 생성<br><br>
  <img src="https://user-images.githubusercontent.com/58936137/194320720-e025ded6-cdc2-46e4-8695-1dc4e750cd31.png" width="200px" height="50px">
  <br>
@@ -100,6 +100,44 @@ HelloControllerTest.class
  <img src="https://user-images.githubusercontent.com/58936137/194322496-9fadcf62-01c9-4660-a35b-367ef7d6e6cf.png" width="350px" height="300px"> 
  <br>
  <img src="https://user-images.githubusercontent.com/58936137/194325201-df1e9e6c-b893-40ec-8a15-722e3994c7dc.png" width="300px" height="100px">
+ 
+ #### 3. Test 코드 작성하기
+ 
+ ##### HelloControllerTest.class
+ ~~~
+ package com.springboot.accountbook.controller;
+
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(controllers = HelloController.class)
+public class HelloControllerTest {
+
+    @Autowired
+    private MockMvc mvc;
+
+    @Test
+    public void hello() throws Exception{
+        String hello = "hello";
+
+        mvc.perform(get("/hello"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(hello));
+    }
+
+}
+~~~
  
  </div>
 </details>

@@ -24,9 +24,12 @@
 ### 6. 트러블슈팅 경험
 
 <details>
-<summary></summary>
+<summary>HelloControllerTest 실행오류</summary>
 <div markdown="1">
 
+-java.lang.AssertionError: Response content 
+ Expected :hello
+ Actual   :Hello World
 
 </div>
 </details> 

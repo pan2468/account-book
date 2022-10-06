@@ -35,7 +35,7 @@
  
  ### 기존코드 
  ~~~
- #### HelloController.class
+ HelloController.class
     
  @GetMapping("/hello")
  public String hello(){
@@ -44,7 +44,7 @@
  }
  
  
- #### HelloControllerTest.class
+ HelloControllerTest.class
  
  @Test
  public void hello() throws Exception{
@@ -60,7 +60,7 @@
  
  ### 개선코드
  ~~~
- #### HelloController.class
+ HelloController.class
     
  @GetMapping("/hello")
  public String hello(){
@@ -69,7 +69,7 @@
  }
  
  
- #### HelloControllerTest.class
+HelloControllerTest.class
  
  @Test
  public void hello() throws Exception{

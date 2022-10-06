@@ -86,7 +86,14 @@ HelloControllerTest.class
 
 
 ### 7. 기술적 issue 해결 과정
+<details>
+<summary>HelloController 테스트 실행</summary>
+<div markdown="1">
 
+<img src="https://user-images.githubusercontent.com/58936137/194320720-e025ded6-cdc2-46e4-8695-1dc4e750cd31.png" width="300px" height="400px">
+
+</div>
+</details>
 
 ### 8. 화면 구성도
 

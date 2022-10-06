@@ -31,7 +31,7 @@
  Expected :hello
  Actual   :Hello World
  
- 해결 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
+- 해결 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
  
  ### 기존코드 
  ~~~
@@ -91,7 +91,7 @@ HelloControllerTest.class
 - Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
 - org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
  
- 해결 원인: runtimeOnly 'mysql:mysql-connector-java' 없어 발생
+- 해결 원인: runtimeOnly 'mysql:mysql-connector-java' 없어 발생
  
  #### build.gradle
  ~~~
@@ -105,6 +105,16 @@ HelloControllerTest.class
 <div markdown="1">
 
 - Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+- 해결 원인: application.properties MySQL 설정 안하여 오류 발생
+
+#### application.properties
+ ~~~
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/account_book?serverTimezone=UTC
+
+spring.datasource.username=root
+spring.datasource.password=1234
+ ~~~
 </div>
 </details> 
 

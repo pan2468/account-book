@@ -310,7 +310,7 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 </div>
 </details>
 
-### 8. 화면 구성도
+
 
   
 

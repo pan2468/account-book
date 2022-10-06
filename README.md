@@ -89,7 +89,7 @@ HelloControllerTest.class
 <div markdown="1">
 
 - Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
-
+- org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
 </div>
 </details> 
 

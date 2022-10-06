@@ -176,7 +176,7 @@ public class HelloController {
  + @RestController 어노테이션 선언 후 모든 메소드 JSON 기능을 주어 return 반환
  + @GetMapping() 지정한 주소 찿아 접근
 
- #### 2. 크롬 View 화면
+ ##### 2. 크롬 View 화면
  
  <img src="https://user-images.githubusercontent.com/58936137/194329238-7691d770-a70c-4542-a84c-0b7edc18d00d.png" width="300px" height="300px">
  

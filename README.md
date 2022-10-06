@@ -172,10 +172,10 @@ public class HelloControllerTest {
 
 }
 ~~~
-+ @RunWith(SpringRunner.class) 선언 후 테스트 코드 컴파일하여 실행
-+ @WebMvcTest 어노테이션 선언 후 웹 MVC 기반으로 테스트 코드 실행
-+ @Autowired 외부 객체 Bean 찿아 의존성 주입하기  
-+ @Test 지정한 메소드 테스트 실행 
++ @RunWith(SpringRunner.class) 선언 후 테스트 코드 컴파일하여 실행합니다.
++ @WebMvcTest 어노테이션 선언 후 웹 MVC 기반으로 테스트 코드 실행합니다.
++ @Autowired 외부 객체 Bean 찿아 의존성 주입합니다.  
++ @Test 지정한 메소드 테스트 실행합니다. 
 
  <br>
  <img src="https://user-images.githubusercontent.com/58936137/194327470-35ce7e59-3d03-40df-839f-c333a52b6cb2.png" width="900px" height="150px">
@@ -207,8 +207,8 @@ public class HelloController {
 }
 
  ~~~
- + @RestController 어노테이션 선언 후 모든 메소드 JSON 기능을 주어 return 반환하기
- + @GetMapping() 지정한 주소 찿아 접근하기
+ + @RestController 어노테이션 선언 후 모든 메소드 JSON 기능을 주어 return 반환합니다.
+ + @GetMapping() 지정한 주소 찿아 접근합니다.
 
  ##### 2. 크롬 View 화면
  
@@ -254,10 +254,10 @@ public class Member {
 
 }
 ~~~
-+ Lombok 라이브러리 통해서 @Getter, @Setter 이용하기
-+ @Entity 어노테이션 선언하여 도메인 모델 생성하기
-+ @Table(name="member") 테이블 이름 지정하기 
-+ 컬럼값은 id, email, password 설정
++ Lombok 라이브러리 통해서 @Getter, @Setter 이용합니다.
++ @Entity 어노테이션 선언하여 도메인 모델 생성합니다.
++ @Table(name="member") 테이블 이름 지정합니다. 
++ 컬럼값은 id, email, password 설정합니다.
 
 ##### AccountBook.class
 
@@ -289,17 +289,17 @@ public class AccountBook {
 }
 
 ~~~
-+ Lombok 라이브러리 통해서 @Getter, @Setter 이용하기
-+ @Entity 어노테이션 선언하여 도메인 모델 생성하기
-+ @Table(name="member") 테이블 이름 지정하기 
-+ 컬럼값은 id, money, memo 설정
++ Lombok 라이브러리 통해서 @Getter, @Setter 이용합니다.
++ @Entity 어노테이션 선언하여 도메인 모델 생성합니다.
++ @Table(name="member") 테이블 이름 지정합니다. 
++ 컬럼값은 id, money, memo 설정합니다.
 
 ##### application.properties
 
 ~~~
 spring.jpa.hibernate.ddl-auto=create // 추가
 ~~~
-+ Run 실행하여 콘솔 로그에서 Entity Table 생성되는 것을 확인할 수 있음
++ Run 실행하여 콘솔 로그에서 Entity Table 생성되는 것을 확인할 수 있습니다.
 <br>
 
 <img src="https://user-images.githubusercontent.com/58936137/194365720-63465b82-14cf-41f2-8eb3-8e17c6ce442b.png" width="400px" height="500px">

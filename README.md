@@ -92,7 +92,7 @@ HelloControllerTest.class
 
 ### 패키지 생성<br>
  1. controller 패키지 생성 > HelloController.class 생성하기 <br><br>
-<img src="https://user-images.githubusercontent.com/58936137/194320720-e025ded6-cdc2-46e4-8695-1dc4e750cd31.png" width="200px" height="50px">
+ <img src="https://user-images.githubusercontent.com/58936137/194320720-e025ded6-cdc2-46e4-8695-1dc4e750cd31.png" width="200px" height="50px">
 
 </div>
 </details>

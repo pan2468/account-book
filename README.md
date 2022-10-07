@@ -120,14 +120,7 @@ spring.datasource.password=1234
 </div>
 </details> 
 
-<details>
-<summary>AccountBook 테스트 등록 실행오류</summary>
-<div markdown="1"
 
-- Caused by: java.lang.IllegalStateException: Cannot load driver class: org.h2.Driver
-
-</div>
-</details> 
 
 ### 💡 기술적 issue 해결 과정
 <details>

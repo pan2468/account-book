@@ -1,4 +1,4 @@
-package com.springboot.accountbook.controller;
+package com.springboot.controller;
 
 
 import org.junit.Test;
@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = HelloController.class)
+@WebMvcTest(controllers = com.springboot.accountbook.controller.HelloController.class)
 public class HelloControllerTest {
 
     @Autowired

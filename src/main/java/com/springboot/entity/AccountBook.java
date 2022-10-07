@@ -2,12 +2,14 @@ package com.springboot.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "account_book")
+@Table(name = "account")
+@ToString
 @Setter @Getter
 public class AccountBook {
 

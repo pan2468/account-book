@@ -30,5 +30,4 @@ class AccountBookRepositoryTest {
         book.setMemo("안녕");
         accountBookRepository.save(book);
     }
-
 }

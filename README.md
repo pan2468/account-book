@@ -309,7 +309,7 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 </details>
 
 <details>
-<summary>가계부 </summary>
+<summary>가계부 등록하기</summary>
 <div markdown="1">
 
 

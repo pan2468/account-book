@@ -343,7 +343,7 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 <summary>가계부 등록하기</summary>
 <div markdown="1">
 
-#### Repository 테스트 코드 실행 
+#### 1. Repository 테스트 코드 실행 
 
 Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
 <br>
@@ -394,6 +394,57 @@ class AccountBookRepositoryTest {
  
  <img src="https://user-images.githubusercontent.com/58936137/194695449-cc52578b-f4e3-42aa-8e1b-9a5fd45cac56.png" width="800px" height="150px">
 
+ <br>
+ 
+ #### 2. Service 테스트 코드 실행
+ 
+ Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194695632-dfd2bc82-c28b-4dd7-9397-d7533a3ef27a.png" width="300px" height="100px">
+ 
+ ##### AccountBookServiceTest.class
+ 
+ ~~~
+ package com.springboot.service;
+
+import com.springboot.entity.AccountBook;
+import com.springboot.repository.AccountBookRepository;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@TestPropertySource(locations = "classpath:application.properties")
+class AccountBookServiceTest {
+
+    @Autowired
+    AccountBookService accountBookService;
+
+    @Autowired
+    AccountBookRepository accountBookRepository;
+
+    @Test
+    @DisplayName("가계부 등록 테스트")
+    public void createBook(){
+        AccountBook book = new AccountBook();
+        book.setMoney(15000);
+        book.setMemo("테스트 등록");
+        accountBookRepository.save(book);
+    }
+ }
+ ~~~
+ + @SpringBooTest 통합테스트 설정하여 실행합니다.
+ + @TestPropertySource 외부 환경설정 정보를 가지고 옵니다.
+ + @Autowired 어노테이션 통해서 AccountBookRepository 의존성 주입을 합니다.
+ + @Test 실행하여 JpaRepository save()메소드로 Entity 값을 저장합니다.
+ 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194695906-3b2db736-2f4d-4c00-8195-bd948628c4d1.png" width="800px" height="150px">
 
 </div>
 </details>

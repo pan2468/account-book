@@ -429,7 +429,7 @@ class AccountBookServiceTest {
 
     @Test
     @DisplayName("Service 테스트 등록")
-    public void createBook(){
+    public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(15000);
         book.setMemo("테스트 등록");

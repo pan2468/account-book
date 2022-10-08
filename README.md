@@ -503,7 +503,7 @@ class AccountBookControllerTest {
 <div markdown="1">
 
  #### 1. Controller, Service, Repository 코드작성
- <br>
+
  
  ##### AccountBookController.class
  
@@ -587,6 +587,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  
  <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="600px" height="300px">
  
+ + url 쿼리스트링에 값을 넣어 POST형식으로 보냅니다.
  
  
 </div>

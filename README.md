@@ -34,7 +34,7 @@
  
 - 해결 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
  
- ### 기존코드 
+ #### 기존코드 
  ~~~
  HelloController.class
     
@@ -59,7 +59,7 @@
  
  ~~~
  
- ### 개선코드
+ #### 개선코드
  ~~~
  HelloController.class
     
@@ -108,7 +108,7 @@ HelloControllerTest.class
 - Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 - 해결 원인: application.properties MySQL 설정 안하여 오류 발생
 
-### 실행오류 개선 
+#### 실행오류 개선 
 #### application.properties
  ~~~
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -342,6 +342,17 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 <details>
 <summary>가계부 등록하기</summary>
 <div markdown="1">
+
+#### Repository 테스트 코드 실행 
+
+Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
+<br>
+
+<img src="https://user-images.githubusercontent.com/58936137/194695015-dac18951-4d81-43d3-954a-74943da710d4.png" width="300px" height="400px">
+
+##### 
+
+
 
 
 </div>

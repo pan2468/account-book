@@ -340,7 +340,7 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 </details>
 
 <details>
-<summary>가계부 등록하기</summary>
+<summary>가계부 테스트 등록</summary>
 <div markdown="1">
 
 #### 1. Repository 테스트 코드 실행 

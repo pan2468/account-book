@@ -492,13 +492,109 @@ class AccountBookControllerTest {
  ~~~
  + @SpringBootTest 통합테스트 실행합니다.
  + @AutoConfigureMockMvc 어노테이션 선언하여 MVC패턴으로 테스트 실행합니다.
- + @Transactional 모든 메소드에게 commit 또는 rock 기능 주어 선언합니다.
+ + @Transactional 모든 메소드에게 commit 또는 Rollback 기능 주어 선언합니다.
  
  <img src="https://user-images.githubusercontent.com/58936137/194697197-17af116d-617a-4a43-b4c5-dc09be029c57.png" width="300px" height="100px">
 
 </div>
 </details>
 
+
+<details>
+<summary>가계부 등록</summary>
+<div markdown="1">
+
+ #### 1. Controller, Service, Repository 코드작성
+ <br>
+ 
+ ##### AccountBookController.class
+ 
+ ~~~
+ package com.springboot.controller;
+
+
+import com.springboot.entity.AccountBook;
+import com.springboot.service.AccountBookService;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@Log4j2
+public class AccountBookController {
+
+    @Autowired
+    AccountBookService accountBookService;
+
+    // 가계부 등록
+    @PostMapping(value = "/account/add")
+    public AccountBook saveAccount(@ModelAttribute AccountBook accountBook) {
+        // log.info("----- 등록 하기전 -------");
+        return accountBookService.saveAccount(accountBook);
+    }
+}
+ ~~~
+ + @RestController 어노테이션 선언하여 모든메소드에게 json 기능을 주어 return 반환합니다.
+ + @Log4j2 오류를 쉽게 찾기 위해서 log 기록을 남깁니다.
+ + @Autowired AccountBookService 의존성을 주입을 합니다.
+ + @PostMapping으로 서버 매개변수에 값을 보내어 Insert 합니다.
+ 
+  
+ ##### AccountBookService.class
+ ~~~
+ package com.springboot.service;
+
+
+import com.springboot.entity.AccountBook;
+import com.springboot.repository.AccountBookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
+public class AccountBookService {
+
+    @Autowired
+    AccountBookRepository accountBookRepository;
+
+    public AccountBook saveAccount(AccountBook accountBook) {
+        accountBookRepository.save(accountBook);
+
+        return accountBook;
+    }
+}
+ ~~~
+ + @Service 비즈니스 로직을 하여 중간다리 역할을 담당합니다.
+ + @Transactional 모든 메소드에게 commit과 Rollback 기능을 주어 선언합니다.
+ + @Autowired AccountBookRepository 의존성 주입을 합니다.
+ + saveAccount 메소드는 매개변수에 값을 받아 Insert 삽입을 수행합니다.
+ 
+ ##### AccountBookRepository.class
+ ~~~
+ package com.springboot.repository;
+
+import com.springboot.entity.AccountBook;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AccountBookRepository extends JpaRepository<AccountBook, Long> {
+
+}
+ ~~~
+ + JpaRepositoy 상속을 받아 CRUD 메소드를 재정의 받습니다.
+ 
+ #### 2. Postman 실행
+ 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="400px" height="150px">
+ 
+ 
+ 
+</div>
+</details>
 
 
   

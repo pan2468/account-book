@@ -378,7 +378,7 @@ class AccountBookRepositoryTest {
 
     @Test
     @DisplayName("가계부 등록하기")
-    public void createBook(){
+    public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(10000);
         book.setMemo("안녕");
@@ -390,6 +390,9 @@ class AccountBookRepositoryTest {
 + @TestPropertySource 외부 환경설정 정보를 가지고 옵니다.
 + @PersistenceContext 어노테이션 선언하여 엔티티에 저장할 값을 EntityManager 영속성컨텍스트 가상환경 데이터베이스에 저장합니다. 
 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194695449-cc52578b-f4e3-42aa-8e1b-9a5fd45cac56.png" width="600px" height="300px">
 
 
 </div>

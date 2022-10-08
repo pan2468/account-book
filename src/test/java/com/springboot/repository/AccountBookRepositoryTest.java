@@ -23,8 +23,8 @@ class AccountBookRepositoryTest {
     EntityManager em;
 
     @Test
-    @DisplayName("가계부 등록하기")
-    public void createBook(){
+    @DisplayName("Repository 테스트 등록")
+    public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(10000);
         book.setMemo("안녕");

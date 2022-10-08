@@ -21,8 +21,8 @@ class AccountBookServiceTest {
     AccountBookRepository accountBookRepository;
 
     @Test
-    @DisplayName("가계부 등록 테스트")
-    public void createBook(){
+    @DisplayName("Service 테스트 등록")
+    public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(15000);
         book.setMemo("테스트 등록");

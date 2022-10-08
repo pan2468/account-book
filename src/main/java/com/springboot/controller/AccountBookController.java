@@ -19,7 +19,7 @@ public class AccountBookController {
     // 가계부 등록
     @PostMapping(value = "/account/add")
     public AccountBook saveAccount(@ModelAttribute AccountBook accountBook) {
-        log.info("----- 등록 하기전 -------");
-       return accountBookService.saveAccount(accountBook);
+        // log.info("----- 등록 하기전 -------");
+        return accountBookService.saveAccount(accountBook);
     }
 }

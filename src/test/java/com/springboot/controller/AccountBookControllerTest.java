@@ -22,12 +22,11 @@ class AccountBookControllerTest {
     AccountBookService accountBookService;
 
     @Test
-    @DisplayName("가계부 테스트 등록")
-    public void createBook(){
+    @DisplayName("Controller 테스트 등록")
+    public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(15000);
         book.setMemo("테스트 실행");
         accountBookService.saveAccount(book);
     }
-
 }

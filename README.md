@@ -445,6 +445,13 @@ class AccountBookServiceTest {
  <br>
  
  <img src="https://user-images.githubusercontent.com/58936137/194696260-0b817ef6-ae19-4f06-83eb-63cfb6f618e0.png" height="150px">
+ 
+ #### 3. Controller 테스트 실행
+ 
+ Ctrl + Shift + T > CreateTest 설정 후 > OK 버튼 클릭
+ 
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194697197-17af116d-617a-4a43-b4c5-dc09be029c57.png" width="300px" height="100px">
 
 </div>
 </details>

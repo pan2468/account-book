@@ -377,11 +377,11 @@ class AccountBookRepositoryTest {
     EntityManager em;
 
     @Test
-    @DisplayName("가계부 등록하기")
+    @DisplayName("Repository 테스트 등록")
     public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(10000);
-        book.setMemo("안녕");
+        book.setMemo("테스트 등록");
         accountBookRepository.save(book);
     }
 }
@@ -392,7 +392,7 @@ class AccountBookRepositoryTest {
 
  <br>
  
- <img src="https://user-images.githubusercontent.com/58936137/194695449-cc52578b-f4e3-42aa-8e1b-9a5fd45cac56.png" width="800px" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194696112-7423c0e8-d222-4664-a84e-f6d82ff6abb6.png" width="800px" height="150px">
 
  <br>
  
@@ -428,7 +428,7 @@ class AccountBookServiceTest {
     AccountBookRepository accountBookRepository;
 
     @Test
-    @DisplayName("가계부 등록 테스트")
+    @DisplayName("Service 테스트 등록")
     public void createBook(){
         AccountBook book = new AccountBook();
         book.setMoney(15000);
@@ -444,7 +444,7 @@ class AccountBookServiceTest {
  
  <br>
  
- <img src="https://user-images.githubusercontent.com/58936137/194695906-3b2db736-2f4d-4c00-8195-bd948628c4d1.png" width="800px" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194696170-a061ef9e-5926-470f-a33c-3b5e1386f28f.png" width="800px" height="150px">
 
 </div>
 </details>

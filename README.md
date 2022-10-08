@@ -450,8 +450,6 @@ class AccountBookServiceTest {
  
  Ctrl + Shift + T > CreateTest 설정 후 > OK 버튼 클릭
  
- <br>
- 
  <img src="https://user-images.githubusercontent.com/58936137/194697294-d00c37f7-1d93-4404-be81-0040a267fca8.png" width="300px" height="100px">
  <br>
  
@@ -587,9 +585,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  
  #### 2. Postman 실행
  
- <br>
- 
- <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="400px" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="600px" height="300px">
  
  
  

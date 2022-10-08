@@ -587,7 +587,15 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  
  <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="600px" height="300px">
  
- + url 쿼리스트링에 값을 넣어 POST형식으로 보냅니다.
+ + URL 쿼리스트링에 값을 넣어 POST형식으로 보냅니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194698305-05c64232-9149-43e3-bfb2-cf13bc2053a8.png" width="600px" height="300px">
+ 
+ + Body > Pretty 에서 등록이 잘되는 것을 확인할 수 있습니다.
+ 
+ 
+ 
+ 
  
  
 </div>

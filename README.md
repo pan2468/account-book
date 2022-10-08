@@ -125,6 +125,27 @@ spring.datasource.password=1234
 <div markdown="1">
 
 - "error": "Unsupported Media Type"
+- 해결원인: 기존에 controller 서버에서 @RestController 선언하였기 때문에 @Responseody return 반환으로 오류 발생
+
+#### 기존코드
+~~~
+    @PostMapping(value = "/account/add")
+    public AccountBook saveAccount(@ResponseBody AccountBook accountBook) { // @ResponseBody 어노테이션 오류  
+        log.info("----- 등록 하기전 -------");
+        return accountBookService.saveAccount(accountBook);
+    }
+~~~
++ @RestController 어노테이션 선언하였기 때문에 @ResponseBody 선언 오류가 발생합니다.
+
+#### 개선코드
+~~~
+    @PostMapping(value = "/account/add")
+    public AccountBook saveAccount(@ModelAttribute AccountBook accountBook) { // @ModelAttribute 변경
+        log.info("----- 등록 하기전 -------");
+        return accountBookService.saveAccount(accountBook);
+    }
+~~~
++ @ModelAttribute 어노테이션 선언하여 사용자가 요청값을 서버 매개변수에 보내서 파라미터로 받습니다.
 
 </div>
 </details>

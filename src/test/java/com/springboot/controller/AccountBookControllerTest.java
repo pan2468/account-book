@@ -27,7 +27,7 @@ class AccountBookControllerTest {
         AccountBook book = new AccountBook();
         book.setMoney(15000);
         book.setMemo("테스트 실행");
-        accountBookService.saveBook(book);
+        accountBookService.saveAccount(book);
     }
 
 }

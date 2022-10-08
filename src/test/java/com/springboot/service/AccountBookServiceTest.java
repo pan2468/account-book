@@ -28,8 +28,4 @@ class AccountBookServiceTest {
         book.setMemo("테스트 등록");
         accountBookRepository.save(book);
     }
-
-
-
-
 }

@@ -14,7 +14,9 @@ public class AccountBookService {
     @Autowired
     AccountBookRepository accountBookRepository;
 
-    public void saveBook(AccountBook book) {
-        accountBookRepository.save(book);
+    public AccountBook saveAccount(AccountBook accountBook) {
+        accountBookRepository.save(accountBook);
+
+        return accountBook;
     }
 }

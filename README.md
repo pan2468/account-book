@@ -350,8 +350,45 @@ Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
 
 <img src="https://user-images.githubusercontent.com/58936137/194695015-dac18951-4d81-43d3-954a-74943da710d4.png" width="300px" height="100px">
 
-##### 
+##### AccountBookRepositoryTest.class
+~~~
+package com.springboot.repository;
 
+import com.springboot.entity.AccountBook;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@TestPropertySource(locations = "classpath:application.properties")
+class AccountBookRepositoryTest {
+
+    @Autowired
+    AccountBookRepository accountBookRepository;
+
+    @PersistenceContext
+    EntityManager em;
+
+    @Test
+    @DisplayName("가계부 등록하기")
+    public void createBook(){
+        AccountBook book = new AccountBook();
+        book.setMoney(10000);
+        book.setMemo("안녕");
+        accountBookRepository.save(book);
+    }
+}
+~~~
++ @SpringBootTest 통합테스트 실행환경 하기 위해 선언합니다.
++ @TestPropertySource 외부 환경설정 정보를 가지고 옵니다.
++ @PersistenceContext 어노테이션 선언하여 엔티티에 저장할 값을 EntityManager 영속성컨텍스트 가상환경 데이터베이스에 저장합니다. 
 
 
 

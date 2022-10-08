@@ -120,6 +120,14 @@ spring.datasource.password=1234
 </div>
 </details> 
 
+<details>
+<summary>REST API 등록 오류</summary>
+<div markdown="1">
+
+- "error": "Unsupported Media Type"
+
+</div>
+</details>
 
 
 ### 💡 기술적 issue 해결 과정

@@ -444,7 +444,7 @@ class AccountBookServiceTest {
  
  <br>
  
- <img src="https://user-images.githubusercontent.com/58936137/194696170-a061ef9e-5926-470f-a33c-3b5e1386f28f.png" width="800px" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194696260-0b817ef6-ae19-4f06-83eb-63cfb6f618e0.png" height="150px">
 
 </div>
 </details>

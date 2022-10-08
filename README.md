@@ -34,7 +34,7 @@
  
 - 해결 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
  
- ### 기존코드 
+ #### 기존코드 
  ~~~
  HelloController.class
     
@@ -59,7 +59,7 @@
  
  ~~~
  
- ### 개선코드
+ #### 개선코드
  ~~~
  HelloController.class
     
@@ -108,7 +108,7 @@ HelloControllerTest.class
 - Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 - 해결 원인: application.properties MySQL 설정 안하여 오류 발생
 
-### 실행오류 개선 
+#### 실행오류 개선 
 #### application.properties
  ~~~
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -125,6 +125,27 @@ spring.datasource.password=1234
 <div markdown="1">
 
 - "error": "Unsupported Media Type"
+- 해결원인: 기존에 controller 서버에서 @RestController 선언하였기 때문에 @Responseody return 반환으로 오류 발생
+
+#### 기존코드
+~~~
+    @PostMapping(value = "/account/add")
+    public AccountBook saveAccount(@ResponseBody AccountBook accountBook) { // @ResponseBody 어노테이션 오류  
+        log.info("----- 등록 하기전 -------");
+        return accountBookService.saveAccount(accountBook);
+    }
+~~~
++ @RestController 어노테이션 선언하였기 때문에 @ResponseBody 선언 오류가 발생합니다.
+
+#### 개선코드
+~~~
+    @PostMapping(value = "/account/add")
+    public AccountBook saveAccount(@ModelAttribute AccountBook accountBook) { // @ModelAttribute 변경
+        log.info("----- 등록 하기전 -------");
+        return accountBookService.saveAccount(accountBook);
+    }
+~~~
++ @ModelAttribute 어노테이션 선언하여 사용자가 요청값을 서버 매개변수에 보내서 파라미터로 받습니다.
 
 </div>
 </details>
@@ -319,13 +340,266 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 </details>
 
 <details>
-<summary>가계부 등록하기</summary>
+<summary>가계부 테스트 등록</summary>
 <div markdown="1">
 
+#### 1. Repository 테스트 코드 실행 
+
+Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
+<br>
+
+<img src="https://user-images.githubusercontent.com/58936137/194695015-dac18951-4d81-43d3-954a-74943da710d4.png" width="300px" height="100px">
+
+##### AccountBookRepositoryTest.class
+~~~
+package com.springboot.repository;
+
+import com.springboot.entity.AccountBook;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@TestPropertySource(locations = "classpath:application.properties")
+class AccountBookRepositoryTest {
+
+    @Autowired
+    AccountBookRepository accountBookRepository;
+
+    @PersistenceContext
+    EntityManager em;
+
+    @Test
+    @DisplayName("Repository 테스트 등록")
+    public void createAccountBook(){
+        AccountBook book = new AccountBook();
+        book.setMoney(10000);
+        book.setMemo("테스트 등록");
+        accountBookRepository.save(book);
+    }
+}
+~~~
++ @SpringBootTest 통합테스트 실행환경 하기 위해 선언합니다.
++ @TestPropertySource 외부 환경설정 정보를 가지고 옵니다.
++ @PersistenceContext 어노테이션 선언하여 엔티티에 저장할 값을 EntityManager 영속성컨텍스트 가상환경 데이터베이스에 저장합니다. 
+
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194696112-7423c0e8-d222-4664-a84e-f6d82ff6abb6.png" width="800px" height="150px">
+
+ <br>
+ 
+ #### 2. Service 테스트 코드 실행
+ 
+ Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194695632-dfd2bc82-c28b-4dd7-9397-d7533a3ef27a.png" width="300px" height="100px">
+ 
+ ##### AccountBookServiceTest.class
+ 
+ ~~~
+ package com.springboot.service;
+
+import com.springboot.entity.AccountBook;
+import com.springboot.repository.AccountBookRepository;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@TestPropertySource(locations = "classpath:application.properties")
+class AccountBookServiceTest {
+
+    @Autowired
+    AccountBookService accountBookService;
+
+    @Autowired
+    AccountBookRepository accountBookRepository;
+
+    @Test
+    @DisplayName("Service 테스트 등록")
+    public void createAccountBook(){
+        AccountBook book = new AccountBook();
+        book.setMoney(15000);
+        book.setMemo("테스트 등록");
+        accountBookRepository.save(book);
+    }
+ }
+ ~~~
+ + @SpringBooTest 통합테스트 설정하여 실행합니다.
+ + @TestPropertySource 외부 환경설정 정보를 가지고 옵니다.
+ + @Autowired 어노테이션 통해서 AccountBookRepository 의존성 주입을 합니다.
+ + @Test 실행하여 JpaRepository save()메소드로 Entity 값을 저장합니다.
+ 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194696260-0b817ef6-ae19-4f06-83eb-63cfb6f618e0.png" height="150px">
+ 
+ #### 3. Controller 테스트 실행
+ 
+ Ctrl + Shift + T > CreateTest 설정 후 > OK 버튼 클릭
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194697294-d00c37f7-1d93-4404-be81-0040a267fca8.png" width="300px" height="100px">
+ <br>
+ 
+ ##### AccountBookControllerTest.class
+ ~~~
+ package com.springboot.controller;
+
+import com.springboot.entity.AccountBook;
+import com.springboot.service.AccountBookService;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@Transactional
+@TestPropertySource(locations = "classpath:application.properties")
+class AccountBookControllerTest {
+
+    @Autowired
+    AccountBookService accountBookService;
+
+    @Test
+    @DisplayName("Controller 테스트 등록")
+    public void createAccountBook(){
+        AccountBook book = new AccountBook();
+        book.setMoney(15000);
+        book.setMemo("테스트 실행");
+        accountBookService.saveAccount(book);
+    }
+}
+ ~~~
+ + @SpringBootTest 통합테스트 실행합니다.
+ + @AutoConfigureMockMvc 어노테이션 선언하여 MVC패턴으로 테스트 실행합니다.
+ + @Transactional 모든 메소드에게 commit 또는 Rollback 기능 주어 선언합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194697197-17af116d-617a-4a43-b4c5-dc09be029c57.png" width="300px" height="100px">
 
 </div>
 </details>
 
+
+<details>
+<summary>가계부 등록</summary>
+<div markdown="1">
+
+ #### 1. Controller, Service, Repository 코드작성
+
+ 
+ ##### AccountBookController.class
+ 
+ ~~~
+ package com.springboot.controller;
+
+
+import com.springboot.entity.AccountBook;
+import com.springboot.service.AccountBookService;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@Log4j2
+public class AccountBookController {
+
+    @Autowired
+    AccountBookService accountBookService;
+
+    // 가계부 등록
+    @PostMapping(value = "/account/add")
+    public AccountBook saveAccount(@ModelAttribute AccountBook accountBook) {
+        // log.info("----- 등록 하기전 -------");
+        return accountBookService.saveAccount(accountBook);
+    }
+}
+ ~~~
+ + @RestController 어노테이션 선언하여 모든메소드에게 json 기능을 주어 return 반환합니다.
+ + @Log4j2 오류를 쉽게 찾기 위해서 log 기록을 남깁니다.
+ + @Autowired AccountBookService 의존성을 주입을 합니다.
+ + @PostMapping으로 서버 매개변수에 값을 보내어 Insert 합니다.
+ 
+  
+ ##### AccountBookService.class
+ ~~~
+ package com.springboot.service;
+
+
+import com.springboot.entity.AccountBook;
+import com.springboot.repository.AccountBookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
+public class AccountBookService {
+
+    @Autowired
+    AccountBookRepository accountBookRepository;
+
+    public AccountBook saveAccount(AccountBook accountBook) {
+        accountBookRepository.save(accountBook);
+
+        return accountBook;
+    }
+}
+ ~~~
+ + @Service 비즈니스 로직을 하여 중간다리 역할을 담당합니다.
+ + @Transactional 모든 메소드에게 commit과 Rollback 기능을 주어 선언합니다.
+ + @Autowired AccountBookRepository 의존성 주입을 합니다.
+ + saveAccount 메소드는 매개변수에 값을 받아 Insert 삽입을 수행합니다.
+ 
+ ##### AccountBookRepository.class
+ ~~~
+ package com.springboot.repository;
+
+import com.springboot.entity.AccountBook;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AccountBookRepository extends JpaRepository<AccountBook, Long> {
+
+}
+ ~~~
+ + JpaRepositoy 상속을 받아 CRUD 메소드를 재정의 받습니다.
+ 
+ #### 2. Postman 실행
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="600px" height="300px">
+ 
+ + URL 쿼리스트링에 값을 넣어 POST형식으로 보냅니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194698305-05c64232-9149-43e3-bfb2-cf13bc2053a8.png" width="600px" height="300px">
+ 
+ + Body > Pretty 에서 등록이 잘되는 것을 확인할 수 있습니다.
+ 
+ 
+ 
+ 
+ 
+ 
+</div>
+</details>
 
 
   

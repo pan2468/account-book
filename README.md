@@ -392,7 +392,7 @@ class AccountBookRepositoryTest {
 
  <br>
  
- <img src="https://user-images.githubusercontent.com/58936137/194695449-cc52578b-f4e3-42aa-8e1b-9a5fd45cac56.png" width="600px" height="300px">
+ <img src="https://user-images.githubusercontent.com/58936137/194695449-cc52578b-f4e3-42aa-8e1b-9a5fd45cac56.png" width="800px" height="150px">
 
 
 </div>

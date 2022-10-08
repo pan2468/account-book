@@ -348,7 +348,7 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
 <br>
 
-<img src="https://user-images.githubusercontent.com/58936137/194695015-dac18951-4d81-43d3-954a-74943da710d4.png" width="300px" height="400px">
+<img src="https://user-images.githubusercontent.com/58936137/194695015-dac18951-4d81-43d3-954a-74943da710d4.png" width="300px" height="100px">
 
 ##### 
 

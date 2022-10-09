@@ -174,10 +174,11 @@ spring.datasource.password=1234
         assertThat(book.getMemo()).isEqualTo(memo);
     }
  ~~~
+
  
  #### 개선 코드
  ~~~
-     @Test
+    @Test
     @DisplayName("가계부 테스트 등록")
     public void createAccountBook(){ //예외 처리 지워 개선
         int money = 15000;

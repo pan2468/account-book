@@ -155,15 +155,6 @@ spring.datasource.password=1234
 <div markdown="1">
  
 - error: unreported exception java.lang.Exception; must be caught or declared to be thrown
-
-</div>
-</details> 
- 
-<details>
-<summary>TDD 삭제 오류</summary>
-<div markdown="1">
-
-- org.springframework.beans.factory.UnsatisfiedDependencyException:
 - 해결 원인: createAccountBook 메소드에 throws Exception 예외 처리하였기 때문에 오류발생;
  
  #### 기존 코드
@@ -206,6 +197,16 @@ spring.datasource.password=1234
  
  <img src="https://user-images.githubusercontent.com/58936137/194743031-963f1fa1-0f87-42c7-b5be-03d244e21f3b.png" width="300px" height="100px">
  + accountBookListTest 메소드 테스트 실행 후 오류없이 잘 해결되어 조회값이 잘 나올 수 있었습니다. 
+ 
+</div>
+</details> 
+ 
+<details>
+<summary>TDD 삭제 오류</summary>
+<div markdown="1">
+
+- org.springframework.beans.factory.UnsatisfiedDependencyException:
+
  
 </div>
 </details>

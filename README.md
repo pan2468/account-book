@@ -225,7 +225,7 @@ spring.datasource.password=1234
 - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
 
 #### 기존코드
-##### 
+##### AccountBookController.class
 ~~~
 // 가계부 조회
 @GetMapping(value = "/account/list")
@@ -236,6 +236,23 @@ public AccountBook AccountBookList(AccountBook accountBook){
    return list.get(0);
 }
 ~~~
+
+#### 개선코드
+##### AccountBookController.class
+~~~
+    // 가계부 조회
+    @GetMapping(value = "/account/list")
+    public List<AccountBook> AccountBookList(@ModelAttribute AccountBook accountBook){ // List 컬렉션 프레임워크와 @ModelAttribute 어노테이션 선언 후 개선
+
+        List<AccountBook> list = accountBookService.listAccount(accountBook);
+
+        return list;
+    }
+ ~~~
+ + 가계부에 List 목록 정보를 조회 하기위해서 메소드 선언부에 List 컬렉션으로 변경 후 개선을 하였습니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194746464-bad5d555-367a-42bf-922d-83d9f00ee05f.png" height="150px">
+ 
 
 </div>
 </details>

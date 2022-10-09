@@ -669,7 +669,27 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
 </div>
 </details>
 
+<details>
+<summary>가계부 조회</summary>
+<div markdown="1">
 
+- java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+
+#### 기존코드
+##### 
+~~~
+// 가계부 조회
+@GetMapping(value = "/account/list")
+public AccountBook AccountBookList(AccountBook accountBook){
+
+   List<AccountBook> list = accountBookService.listAccount(accountBook);
+
+   return list.get(0);
+}
+~~~
+
+</div>
+</details>
   
 
 

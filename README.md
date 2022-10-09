@@ -512,6 +512,7 @@ class AccountBookServiceTest {
  + JpaRepository findAll() 메소드 통해서 조회 값 전체 출력합니다.
  + findAll() 조회 출력 값에서 id 값을 findById() 메소드에 넣어 상세 조회 출력합니다.
  
+ <img src="https://user-images.githubusercontent.com/58936137/194744428-ed3ca83f-9c82-4cd9-861b-9b5635eb4ba6.png" height="150px">
  
  
  </div>

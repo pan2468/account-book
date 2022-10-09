@@ -34,7 +34,7 @@
  
 - 해결 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
  
- #### 기존코드 
+ #### 기존 코드 
  ~~~
  HelloController.class
     
@@ -59,7 +59,7 @@
  
  ~~~
  
- #### 개선코드
+ #### 개선 코드
  ~~~
  HelloController.class
     
@@ -127,7 +127,7 @@ spring.datasource.password=1234
 - "error": "Unsupported Media Type"
 - 해결원인: 기존에 controller 서버에서 @RestController 선언하였기 때문에 @Responseody return 반환으로 오류 발생
 
-#### 기존코드
+#### 기존 코드
 ~~~
     @PostMapping(value = "/account/add")
     public AccountBook saveAccount(@ResponseBody AccountBook accountBook) { // @ResponseBody 어노테이션 오류  
@@ -137,7 +137,7 @@ spring.datasource.password=1234
 ~~~
 + @RestController 어노테이션 선언하였기 때문에 @ResponseBody 선언 오류가 발생합니다.
 
-#### 개선코드
+#### 개선 코드
 ~~~
     @PostMapping(value = "/account/add")
     public AccountBook saveAccount(@ModelAttribute AccountBook accountBook) { // @ModelAttribute 변경
@@ -224,7 +224,7 @@ spring.datasource.password=1234
  
 - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
 
-#### 기존코드
+#### 기존 코드
 ##### AccountBookController.class
 ~~~
 // 가계부 조회
@@ -237,7 +237,7 @@ public AccountBook AccountBookList(AccountBook accountBook){
 }
 ~~~
 
-#### 개선코드
+#### 개선 코드
 ##### AccountBookController.class
 ~~~
     // 가계부 조회

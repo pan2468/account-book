@@ -353,7 +353,7 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 <div markdown="1">
 
 
- #### 2. 테스트 코드 
+ #### 2. 테스트 코드 작성
  
  Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
  

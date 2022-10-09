@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class AccountBookService {
@@ -18,5 +20,11 @@ public class AccountBookService {
         accountBookRepository.save(accountBook);
 
         return accountBook;
+    }
+
+    public List<AccountBook> listAccount(AccountBook accountBook){
+        List<AccountBook> accountBooks  = accountBookRepository.findAll();
+
+        return accountBooks;
     }
 }

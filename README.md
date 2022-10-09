@@ -349,63 +349,11 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 </details>
 
 <details>
-<summary>가계부 테스트 등록</summary>
+<summary>가계부 TDD</summary>
 <div markdown="1">
 
-#### 1. Repository 테스트 코드 실행 
 
-Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
-<br>
-
-<img src="https://user-images.githubusercontent.com/58936137/194695015-dac18951-4d81-43d3-954a-74943da710d4.png" width="300px" height="100px">
-
-##### AccountBookRepositoryTest.class
-~~~
-package com.springboot.repository;
-
-import com.springboot.entity.AccountBook;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest
-@TestPropertySource(locations = "classpath:application.properties")
-class AccountBookRepositoryTest {
-
-    @Autowired
-    AccountBookRepository accountBookRepository;
-
-    @PersistenceContext
-    EntityManager em;
-
-    @Test
-    @DisplayName("Repository 테스트 등록")
-    public void createAccountBook(){
-        AccountBook book = new AccountBook();
-        book.setMoney(10000);
-        book.setMemo("테스트 등록");
-        accountBookRepository.save(book);
-    }
-}
-~~~
-+ @SpringBootTest 통합테스트 실행환경 하기 위해 선언합니다.
-+ @TestPropertySource 외부 환경설정 정보를 가지고 옵니다.
-+ @PersistenceContext 어노테이션 선언하여 엔티티에 저장할 값을 EntityManager 영속성컨텍스트 가상환경 데이터베이스에 저장합니다. 
-
- <br>
- 
- <img src="https://user-images.githubusercontent.com/58936137/194696112-7423c0e8-d222-4664-a84e-f6d82ff6abb6.png" width="800px" height="150px">
-
- <br>
- 
- #### 2. Service 테스트 코드 실행
+ #### 2. 테스트 코드 
  
  Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
  
@@ -455,55 +403,7 @@ class AccountBookServiceTest {
  
  <img src="https://user-images.githubusercontent.com/58936137/194696260-0b817ef6-ae19-4f06-83eb-63cfb6f618e0.png" height="150px">
  
- #### 3. Controller 테스트 실행
- 
- Ctrl + Shift + T > CreateTest 설정 후 > OK 버튼 클릭
- 
- <img src="https://user-images.githubusercontent.com/58936137/194697294-d00c37f7-1d93-4404-be81-0040a267fca8.png" width="300px" height="100px">
- <br>
- 
- ##### AccountBookControllerTest.class
- ~~~
- package com.springboot.controller;
-
-import com.springboot.entity.AccountBook;
-import com.springboot.service.AccountBookService;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.transaction.annotation.Transactional;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest
-@AutoConfigureMockMvc
-@Transactional
-@TestPropertySource(locations = "classpath:application.properties")
-class AccountBookControllerTest {
-
-    @Autowired
-    AccountBookService accountBookService;
-
-    @Test
-    @DisplayName("Controller 테스트 등록")
-    public void createAccountBook(){
-        AccountBook book = new AccountBook();
-        book.setMoney(15000);
-        book.setMemo("테스트 실행");
-        accountBookService.saveAccount(book);
-    }
-}
- ~~~
- + @SpringBootTest 통합테스트 실행합니다.
- + @AutoConfigureMockMvc 어노테이션 선언하여 MVC패턴으로 테스트 실행합니다.
- + @Transactional 모든 메소드에게 commit 또는 Rollback 기능 주어 선언합니다.
- 
- <img src="https://user-images.githubusercontent.com/58936137/194697197-17af116d-617a-4a43-b4c5-dc09be029c57.png" width="300px" height="100px">
-
-</div>
+ </div>
 </details>
 
 

@@ -487,7 +487,7 @@ class AccountBookServiceTest {
  
  <br>
  
- <img src="https://user-images.githubusercontent.com/58936137/194744230-8802c86a-acfd-4e15-ba43-db61d0b71046.png" width="400px" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194744324-06ab4be1-4f5f-4e6c-b9f8-f958f8e50913.png"  height="150px">
  
  #### 테스트 상세조회 구현하기
  ##### AccountBookServiceTest.class

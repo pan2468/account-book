@@ -251,7 +251,7 @@ public AccountBook AccountBookList(AccountBook accountBook){
  ~~~
  + 가계부에 List 목록 정보를 조회 하기위해서 메소드 선언부에 List 컬렉션으로 변경 후 개선을 하였습니다.
  
- <img src="https://user-images.githubusercontent.com/58936137/194746464-bad5d555-367a-42bf-922d-83d9f00ee05f.png" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194746464-bad5d555-367a-42bf-922d-83d9f00ee05f.png" height="250px">
  
 
 </div>

@@ -445,7 +445,7 @@ class AccountBookServiceTest {
     AccountBookRepository accountBookRepository;
 
     @Test
-    @DisplayName("Service 테스트 등록")
+    @DisplayName("가계부 테스트 등록")
     public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(15000);
@@ -466,8 +466,53 @@ class AccountBookServiceTest {
  #### 테스트 조회 구현하기
  ##### AccountBookServiceTest.class
  ~~~
- 
+     // 조회
+    @Test
+    @DisplayName("가계부 테스트 조회")
+    public void accountBookListTest(){
+        int money = 15000;
+        String memo = "테스트 등록";
+
+        this.createAccountBook();
+        List<AccountBook> accountBooks = accountBookRepository.findAll();
+        AccountBook list = accountBooks.get(0);
+
+        assertThat(list.getMoney()).isEqualTo(money);
+        assertThat(list.getMemo()).isEqualTo(memo);
+    }
  ~~~
+ + @Test 어노테이션 선언하여 메소드 지정하여 테스트 실행합니다.
+ + 지역 변수 int money = 15000, String memo = "테스트 등록" 조회 값이랑 동일한지 확인하기위해서 선언하였습니다.
+ + JpaRepository findAll() 메소드를 이용하여 조회 값 출력합니다.
+ 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194744230-8802c86a-acfd-4e15-ba43-db61d0b71046.png" width="400px" height="150px">
+ 
+ #### 테스트 상세조회 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+     //상세 조회
+    @Test
+    @DisplayName("가계부 상세 조회")
+    public void AccountBookDetailTest(){
+        this.createAccountBook();
+        List<AccountBook> bookList = accountBookRepository.findAll();
+
+        AccountBook accountBook = bookList.get(0);
+        AccountBook list = accountBookRepository.findById(accountBook.getId())
+                .orElseThrow(EntityNotFoundException::new);
+
+        assertEquals(list.getId(), accountBook.getId());
+        assertEquals(list.getMoney(), accountBook.getMoney());
+        assertEquals(list.getMemo(), accountBook.getMemo());
+    }
+ ~~~
+ + @Test 어노테이션 선언하여 메소드 지정하여 테스트 실행합니다.
+ + JpaRepository findAll() 메소드 통해서 조회 값 전체 출력합니다.
+ + findAll() 조회 출력 값에서 id 값을 findById() 메소드에 넣어 상세 조회 출력합니다.
+ 
+ 
  
  </div>
 </details>
@@ -567,10 +612,6 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  <img src="https://user-images.githubusercontent.com/58936137/194698305-05c64232-9149-43e3-bfb2-cf13bc2053a8.png" width="600px" height="300px">
  
  + Body > Pretty 에서 등록이 잘되는 것을 확인할 수 있습니다.
- 
- 
- 
- 
  
  
 </div>

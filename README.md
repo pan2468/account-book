@@ -543,7 +543,7 @@ class AccountBookServiceTest {
  + 조회 값에서 Setter 통해서 수정합니다.
  + Entity 도메인 값을 save() 메소드 통해서 저장합니다.
  
- <img src="https://user-images.githubusercontent.com/58936137/194744587-f372e40e-c553-4816-aef7-84cd9f763ab1.png" width="600px" height="150px">
+ <img src="https://user-images.githubusercontent.com/58936137/194744587-f372e40e-c553-4816-aef7-84cd9f763ab1.png" width="800px" height="150px">
  
  #### 테스트 삭제 구현하기
  ##### AccountBookServiceTest.class

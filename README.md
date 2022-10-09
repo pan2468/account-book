@@ -151,6 +151,15 @@ spring.datasource.password=1234
 </details>
 
 <details>
+<summary>TDD 조회 오류</summary>
+<div markdown="1">
+ 
+- error: unreported exception java.lang.Exception; must be caught or declared to be thrown
+
+</div>
+</details> 
+ 
+<details>
 <summary>TDD 삭제 오류</summary>
 <div markdown="1">
 
@@ -359,6 +368,7 @@ spring.jpa.hibernate.ddl-auto=create // 추가
  
  <img src="https://user-images.githubusercontent.com/58936137/194695632-dfd2bc82-c28b-4dd7-9397-d7533a3ef27a.png" width="300px" height="100px">
  
+ #### 테스트 등록 구현하기
  ##### AccountBookServiceTest.class
  
  ~~~
@@ -402,6 +412,12 @@ class AccountBookServiceTest {
  <br>
  
  <img src="https://user-images.githubusercontent.com/58936137/194696260-0b817ef6-ae19-4f06-83eb-63cfb6f618e0.png" height="150px">
+ 
+ #### 테스트 조회 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+ 
+ ~~~
  
  </div>
 </details>

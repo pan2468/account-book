@@ -208,7 +208,12 @@ spring.datasource.password=1234
 <div markdown="1">
 
 - org.springframework.beans.factory.UnsatisfiedDependencyException:
+- 해결원인: @Autowired private MockMvc mockMvc; 사용하지 않고 선언하였기 때문에 오류발생 
 
+ 
+<img src="https://user-images.githubusercontent.com/58936137/194743599-6af4af1a-308a-4b79-a626-0bf89532cf6a.png" width="300px" height="100px"> 
+<br><br>
+💡 @Autowired private MockMvc mockMvc; 코드 주석 후 테스트 실행하여 삭제가 잘 처리될 수 있었습니다. 
  
 </div>
 </details>

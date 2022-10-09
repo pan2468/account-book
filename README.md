@@ -443,7 +443,8 @@ class AccountBookServiceTest {
 
     @Autowired
     AccountBookRepository accountBookRepository;
-
+    
+    // 등록
     @Test
     @DisplayName("가계부 테스트 등록")
     public void createAccountBook(){

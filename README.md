@@ -194,10 +194,9 @@ spring.datasource.password=1234
  ~~~
  
  <br>
- 
- <img src="https://user-images.githubusercontent.com/58936137/194743031-963f1fa1-0f87-42c7-b5be-03d244e21f3b.png" width="300px" height="100px">
- <br>
+
  💡 accountBookListTest 메소드 테스트 실행 후 오류없이 잘 해결되어 조회값이 잘 나올 수 있었습니다. 
+ <img src="https://user-images.githubusercontent.com/58936137/194743031-963f1fa1-0f87-42c7-b5be-03d244e21f3b.png" width="300px" height="100px">
  
 </div>
 </details> 

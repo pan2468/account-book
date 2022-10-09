@@ -150,6 +150,15 @@ spring.datasource.password=1234
 </div>
 </details>
 
+<details>
+<summary>TDD 삭제 오류</summary>
+<div markdown="1">
+
+- org.springframework.beans.factory.UnsatisfiedDependencyException:
+
+</div>
+</details>
+
 
 ### 💡 기술적 issue 해결 과정
 <details>

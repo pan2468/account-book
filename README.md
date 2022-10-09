@@ -223,6 +223,7 @@ spring.datasource.password=1234
 <div markdown="1">
  
 - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+- 해결 원인: 메소드 선언부에 List 컬렉션을 선언하지 않아 오류 발생 
 
 #### 기존 코드
 ##### AccountBookController.class

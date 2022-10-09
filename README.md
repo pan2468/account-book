@@ -150,6 +150,74 @@ spring.datasource.password=1234
 </div>
 </details>
 
+<details>
+<summary>TDD 조회 오류</summary>
+<div markdown="1">
+ 
+- error: unreported exception java.lang.Exception; must be caught or declared to be thrown
+- 해결 원인: createAccountBook 메소드에 throws Exception 예외 처리하였기 때문에 오류발생;
+ 
+ #### 기존 코드
+ ~~~
+    @Test
+    @DisplayName("가계부 테스트 등록")
+    public void createAccountBook()throws Exception{ //예외 처리 선언하여 발생
+        int money = 15000;
+        String memo = "테스트 등록";
+
+        AccountBook book = new AccountBook();
+        book.setMoney(15000);
+        book.setMemo("테스트 등록");
+        accountBookRepository.save(book);
+
+        assertThat(book.getMoney()).isEqualTo(money);
+        assertThat(book.getMemo()).isEqualTo(memo);
+    }
+ ~~~
+
+ 
+ #### 개선 코드
+ ~~~
+    @Test
+    @DisplayName("가계부 테스트 등록")
+    public void createAccountBook(){ //예외 처리 지워 개선
+        int money = 15000;
+        String memo = "테스트 등록";
+
+        AccountBook book = new AccountBook();
+        book.setMoney(15000);
+        book.setMemo("테스트 등록");
+        accountBookRepository.save(book);
+
+        assertThat(book.getMoney()).isEqualTo(money);
+        assertThat(book.getMemo()).isEqualTo(memo);
+    }
+ ~~~
+ 
+ <br>
+
+ 💡accountBookListTest 메소드 테스트 실행 후 오류없이 잘 해결되어 조회값이 잘 나올 수 있었습니다. 
+ <br/><br/>
+ <img src="https://user-images.githubusercontent.com/58936137/194743031-963f1fa1-0f87-42c7-b5be-03d244e21f3b.png" width="300px" height="100px">
+ 
+</div>
+</details> 
+ 
+<details>
+<summary>TDD 삭제 오류</summary>
+<div markdown="1">
+
+- org.springframework.beans.factory.UnsatisfiedDependencyException:
+- 해결원인: @Autowired private MockMvc mockMvc; 사용하지 않고 선언하였기 때문에 오류발생 
+
+ 
+<img src="https://user-images.githubusercontent.com/58936137/194743599-6af4af1a-308a-4b79-a626-0bf89532cf6a.png" width="600px" height="150px"> 
+<br><br>
+💡 @Autowired private MockMvc mockMvc; 코드 주석 후 테스트 실행하여 삭제가 잘 처리될 수 있었습니다. 
+ 
+</div>
+</details>
+
 
 ### 💡 기술적 issue 해결 과정
 <details>
@@ -340,68 +408,17 @@ spring.jpa.hibernate.ddl-auto=create // 추가
 </details>
 
 <details>
-<summary>가계부 테스트 등록</summary>
+<summary>가계부 TDD</summary>
 <div markdown="1">
 
-#### 1. Repository 테스트 코드 실행 
 
-Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
-<br>
-
-<img src="https://user-images.githubusercontent.com/58936137/194695015-dac18951-4d81-43d3-954a-74943da710d4.png" width="300px" height="100px">
-
-##### AccountBookRepositoryTest.class
-~~~
-package com.springboot.repository;
-
-import com.springboot.entity.AccountBook;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest
-@TestPropertySource(locations = "classpath:application.properties")
-class AccountBookRepositoryTest {
-
-    @Autowired
-    AccountBookRepository accountBookRepository;
-
-    @PersistenceContext
-    EntityManager em;
-
-    @Test
-    @DisplayName("Repository 테스트 등록")
-    public void createAccountBook(){
-        AccountBook book = new AccountBook();
-        book.setMoney(10000);
-        book.setMemo("테스트 등록");
-        accountBookRepository.save(book);
-    }
-}
-~~~
-+ @SpringBootTest 통합테스트 실행환경 하기 위해 선언합니다.
-+ @TestPropertySource 외부 환경설정 정보를 가지고 옵니다.
-+ @PersistenceContext 어노테이션 선언하여 엔티티에 저장할 값을 EntityManager 영속성컨텍스트 가상환경 데이터베이스에 저장합니다. 
-
- <br>
- 
- <img src="https://user-images.githubusercontent.com/58936137/194696112-7423c0e8-d222-4664-a84e-f6d82ff6abb6.png" width="800px" height="150px">
-
- <br>
- 
- #### 2. Service 테스트 코드 실행
+ #### 2. 테스트 코드 작성
  
  Ctrl + Shift + T > CreateTest 설정 후 OK버튼 클릭
  
  <img src="https://user-images.githubusercontent.com/58936137/194695632-dfd2bc82-c28b-4dd7-9397-d7533a3ef27a.png" width="300px" height="100px">
  
+ #### 테스트 등록 구현하기
  ##### AccountBookServiceTest.class
  
  ~~~
@@ -426,9 +443,10 @@ class AccountBookServiceTest {
 
     @Autowired
     AccountBookRepository accountBookRepository;
-
+    
+    // 등록
     @Test
-    @DisplayName("Service 테스트 등록")
+    @DisplayName("가계부 테스트 등록")
     public void createAccountBook(){
         AccountBook book = new AccountBook();
         book.setMoney(15000);
@@ -446,55 +464,109 @@ class AccountBookServiceTest {
  
  <img src="https://user-images.githubusercontent.com/58936137/194696260-0b817ef6-ae19-4f06-83eb-63cfb6f618e0.png" height="150px">
  
- #### 3. Controller 테스트 실행
+ #### 테스트 조회 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+     // 조회
+    @Test
+    @DisplayName("가계부 테스트 조회")
+    public void accountBookListTest(){
+        int money = 15000;
+        String memo = "테스트 등록";
+
+        this.createAccountBook();
+        List<AccountBook> accountBooks = accountBookRepository.findAll();
+        AccountBook list = accountBooks.get(0);
+
+        assertThat(list.getMoney()).isEqualTo(money);
+        assertThat(list.getMemo()).isEqualTo(memo);
+    }
+ ~~~
+ + @Test 어노테이션 선언하여 메소드 지정하여 테스트 실행합니다.
+ + 지역 변수 int money, String memo 조회 값이랑 동일한지 확인하기위해서 선언하였습니다.
+ + JpaRepository findAll() 메소드를 이용하여 조회 값 출력합니다.
  
- Ctrl + Shift + T > CreateTest 설정 후 > OK 버튼 클릭
- 
- <img src="https://user-images.githubusercontent.com/58936137/194697294-d00c37f7-1d93-4404-be81-0040a267fca8.png" width="300px" height="100px">
  <br>
  
- ##### AccountBookControllerTest.class
- ~~~
- package com.springboot.controller;
-
-import com.springboot.entity.AccountBook;
-import com.springboot.service.AccountBookService;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.transaction.annotation.Transactional;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest
-@AutoConfigureMockMvc
-@Transactional
-@TestPropertySource(locations = "classpath:application.properties")
-class AccountBookControllerTest {
-
-    @Autowired
-    AccountBookService accountBookService;
-
-    @Test
-    @DisplayName("Controller 테스트 등록")
-    public void createAccountBook(){
-        AccountBook book = new AccountBook();
-        book.setMoney(15000);
-        book.setMemo("테스트 실행");
-        accountBookService.saveAccount(book);
-    }
-}
- ~~~
- + @SpringBootTest 통합테스트 실행합니다.
- + @AutoConfigureMockMvc 어노테이션 선언하여 MVC패턴으로 테스트 실행합니다.
- + @Transactional 모든 메소드에게 commit 또는 Rollback 기능 주어 선언합니다.
+ <img src="https://user-images.githubusercontent.com/58936137/194744324-06ab4be1-4f5f-4e6c-b9f8-f958f8e50913.png"  height="150px">
  
- <img src="https://user-images.githubusercontent.com/58936137/194697197-17af116d-617a-4a43-b4c5-dc09be029c57.png" width="300px" height="100px">
+ #### 테스트 상세조회 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+     //상세 조회
+    @Test
+    @DisplayName("가계부 상세 조회")
+    public void AccountBookDetailTest(){
+        this.createAccountBook();
+        List<AccountBook> bookList = accountBookRepository.findAll();
 
-</div>
+        AccountBook accountBook = bookList.get(0);
+        AccountBook list = accountBookRepository.findById(accountBook.getId())
+                .orElseThrow(EntityNotFoundException::new);
+
+        assertEquals(list.getId(), accountBook.getId());
+        assertEquals(list.getMoney(), accountBook.getMoney());
+        assertEquals(list.getMemo(), accountBook.getMemo());
+    }
+ ~~~
+ + @Test 어노테이션 선언하여 메소드 지정하여 테스트 실행합니다.
+ + JpaRepository findAll() 메소드 통해서 조회 값 전체 출력합니다.
+ + findAll() 조회 출력 값에서 id 값을 findById() 메소드에 넣어 상세 조회 출력합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194744428-ed3ca83f-9c82-4cd9-861b-9b5635eb4ba6.png" height="150px">
+ 
+ #### 테스트 수정 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+    @Test
+    @DisplayName("가계부 테스트 수정")
+    public void AccountBookUpdateTest(){
+        int money = 20000;
+        String memo = "테스트 수정";
+
+        this.createAccountBook();
+        List<AccountBook> bookList = accountBookRepository.findAll();
+
+        AccountBook accountBook = bookList.get(0);
+        accountBook.setMoney(20000);
+        accountBook.setMemo("테스트 수정");
+
+        accountBookRepository.save(accountBook);
+
+        assertThat(accountBook.getMoney()).isEqualTo(money);
+        assertThat(accountBook.getMemo()).isEqualTo(memo);
+
+    }
+ ~~~
+ + 지역변수 int money, String memo 수정 값이랑 동일한지 확인하기 위해서 선언합니다. 
+ + JpaRepository findAll() 메소드 통해서 조회 값 출력합니다.
+ + 조회 값에서 Setter 통해서 수정합니다.
+ + Entity 도메인 값을 save() 메소드 통해서 저장합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194744587-f372e40e-c553-4816-aef7-84cd9f763ab1.png" width="800px" height="200px">
+ 
+ #### 테스트 삭제 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+    @Test
+    @DisplayName("가계부 테스트 삭제")
+    public void AccountBookDeleteTest(){
+        Long num = 1L;
+        this.createAccountBook();
+        accountBookRepository.deleteById(num);
+
+        List<AccountBook> accountBooks = accountBookRepository.findAll();
+
+        System.out.println(accountBooks.toString());
+    }
+ ~~~
+ + Long num = 1L; 변수 선언합니다.
+ + JpaRepository deleteById() 메소드에 id 값을 넣어 가계부 조회하여 삭제합니다.
+ + findAll() 메소드 조회 값을 출력하여 null 인지 확인합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194744818-2f8a24a9-f448-44de-89c2-6718767ef86b.png" height="150px">
+ 
+ </div>
 </details>
 
 
@@ -592,10 +664,6 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  <img src="https://user-images.githubusercontent.com/58936137/194698305-05c64232-9149-43e3-bfb2-cf13bc2053a8.png" width="600px" height="300px">
  
  + Body > Pretty 에서 등록이 잘되는 것을 확인할 수 있습니다.
- 
- 
- 
- 
  
  
 </div>

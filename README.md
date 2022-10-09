@@ -218,6 +218,28 @@ spring.datasource.password=1234
 </div>
 </details>
 
+<details>
+<summary>가계부 조회 오류</summary>
+<div markdown="1">
+ 
+- java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+
+#### 기존코드
+##### 
+~~~
+// 가계부 조회
+@GetMapping(value = "/account/list")
+public AccountBook AccountBookList(AccountBook accountBook){
+
+   List<AccountBook> list = accountBookService.listAccount(accountBook);
+
+   return list.get(0);
+}
+~~~
+
+</div>
+</details>
+
 
 ### 💡 기술적 issue 해결 과정
 <details>
@@ -467,7 +489,7 @@ class AccountBookServiceTest {
  #### 테스트 조회 구현하기
  ##### AccountBookServiceTest.class
  ~~~
-     // 조회
+    // 조회
     @Test
     @DisplayName("가계부 테스트 조회")
     public void accountBookListTest(){
@@ -673,20 +695,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
 <summary>가계부 조회</summary>
 <div markdown="1">
 
-- java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
 
-#### 기존코드
-##### 
-~~~
-// 가계부 조회
-@GetMapping(value = "/account/list")
-public AccountBook AccountBookList(AccountBook accountBook){
-
-   List<AccountBook> list = accountBookService.listAccount(accountBook);
-
-   return list.get(0);
-}
-~~~
 
 </div>
 </details>

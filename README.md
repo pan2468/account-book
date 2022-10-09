@@ -483,7 +483,7 @@ class AccountBookServiceTest {
     }
  ~~~
  + @Test 어노테이션 선언하여 메소드 지정하여 테스트 실행합니다.
- + 지역 변수 int money = 15000, String memo = "테스트 등록" 조회 값이랑 동일한지 확인하기위해서 선언하였습니다.
+ + 지역 변수 int money, String memo 조회 값이랑 동일한지 확인하기위해서 선언하였습니다.
  + JpaRepository findAll() 메소드를 이용하여 조회 값 출력합니다.
  
  <br>
@@ -515,6 +515,56 @@ class AccountBookServiceTest {
  
  <img src="https://user-images.githubusercontent.com/58936137/194744428-ed3ca83f-9c82-4cd9-861b-9b5635eb4ba6.png" height="150px">
  
+ #### 테스트 수정 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+    @Test
+    @DisplayName("가계부 테스트 수정")
+    public void AccountBookUpdateTest(){
+        int money = 20000;
+        String memo = "테스트 수정";
+
+        this.createAccountBook();
+        List<AccountBook> bookList = accountBookRepository.findAll();
+
+        AccountBook accountBook = bookList.get(0);
+        accountBook.setMoney(20000);
+        accountBook.setMemo("테스트 수정");
+
+        accountBookRepository.save(accountBook);
+
+        assertThat(accountBook.getMoney()).isEqualTo(money);
+        assertThat(accountBook.getMemo()).isEqualTo(memo);
+
+    }
+ ~~~
+ + 지역변수 int money, String memo 수정 값이랑 동일한지 확인하기 위해서 선언합니다. 
+ + JpaRepository findAll() 메소드 통해서 조회 값 출력합니다.
+ + 조회 값에서 Setter 통해서 수정합니다.
+ + Entity 도메인 값을 save() 메소드 통해서 저장합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194744587-f372e40e-c553-4816-aef7-84cd9f763ab1.png" height="150px">
+ 
+ #### 테스트 삭제 구현하기
+ ##### AccountBookServiceTest.class
+ ~~~
+    @Test
+    @DisplayName("가계부 테스트 삭제")
+    public void AccountBookDeleteTest(){
+        Long num = 1L;
+        this.createAccountBook();
+        accountBookRepository.deleteById(num);
+
+        List<AccountBook> accountBooks = accountBookRepository.findAll();
+
+        System.out.println(accountBooks.toString());
+    }
+ ~~~
+ + Long num = 1L; 변수 선언합니다.
+ + JpaRepository deleteById() 메소드에 id 값을 넣어 가계부 조회하여 삭제합니다.
+ + findAll() 메소드 조회 값을 출력하여 null 인지 확인합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194744818-2f8a24a9-f448-44de-89c2-6718767ef86b.png" height="150px">
  
  </div>
 </details>

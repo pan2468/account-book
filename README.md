@@ -786,8 +786,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  
  <br>
  
- <img src="https://user-images.githubusercontent.com/58936137/194912570-d6d22a24-c80b-4321-8745-54f991168aee.png" width="700px" height="200px">
- <br>
+ <img src="https://user-images.githubusercontent.com/58936137/194912570-d6d22a24-c80b-4321-8745-54f991168aee.png" width="700px" height="200px"><br>
  + id 값을 받아 조회가 잘 출력되는 것을 확인할 수 있습니다.
 
 </div>

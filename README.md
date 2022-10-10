@@ -19,8 +19,12 @@
 
 ### 4. IDE 개발환경
 + <a href="https://www.jetbrains.com/ko-kr/idea/">InteliJ IDEA </a>
++ <a href="https://www.postman.com/">Postman</a>
 
 ### 5. MSA 아키텍처
+> MSA(Micro Service Architecture)이란 하나의 애플리케이션에 담아져 있는 서버를 작은 컴포넌트 별로 쪼개어 관리하는 아키텍처입니다. 많은 사용자들이 하나의 서버에 대용량 트래픽 발생으로 장애가 생기기 때문에 이를 대처하기 위해서 로드밸런싱으로 서버를 분산하여 관리합니다. 
+
+<img src="https://user-images.githubusercontent.com/58936137/194913580-9158fc4b-7aa1-4cc8-b814-92e00f8e266f.png" width="600px" height="350px">
 
 ### 6. 트러블슈팅 경험
 
@@ -697,11 +701,11 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  
  #### 2. Postman 실행
  
- <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="600px" height="300px">
+ <img src="https://user-images.githubusercontent.com/58936137/194908699-02b9732f-eb38-42e5-9dd6-2a49068ee89e.png" width="" height="100px">
  
  + URL 쿼리스트링에 값을 넣어 POST형식으로 보냅니다.
- 
- <img src="https://user-images.githubusercontent.com/58936137/194698305-05c64232-9149-43e3-bfb2-cf13bc2053a8.png" width="600px" height="300px">
+ <br>
+ <img src="https://user-images.githubusercontent.com/58936137/194908961-ccc6dfc3-3d39-4432-88cc-5e5bb2c4a843.png" width="700px" height="300px">
  
  + Body > Pretty 에서 등록이 잘되는 것을 확인할 수 있습니다.
  
@@ -713,10 +717,168 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
 <summary>가계부 조회</summary>
 <div markdown="1">
 
+ #### 조회 출력하기
+ 
+ ##### AccountBookController.class
+ ~~~
+     // 가계부 조회
+    @GetMapping(value = "/list")
+    public List<AccountBook> AccountBookList(){
+        AccountBook accountBook = new AccountBook();   
+    
+        List<AccountBook> list = accountBookService.listAccount();
+
+        return list;
+    }
+
+ ~~~
+ + @GetMapping() URL 자원을 통해 목록 조회 값을 출력합니다. 
+ 
+ ##### AccountBookService.class
+ ~~~
+     public List<AccountBook> listAccount(){
+        List<AccountBook> accountBooks  = accountBookRepository.findAll();
+
+        return accountBooks;
+    }
+ ~~~
+ + JpaRepository findAll()메소드 이용해서 조회 값을 출력합니다.
+ 
+<img src="https://user-images.githubusercontent.com/58936137/194908961-ccc6dfc3-3d39-4432-88cc-5e5bb2c4a843.png" width="700px" height="300px"><br>
++ 전체 출력이 잘 되는 것을 확인할 수 있습니다.
+ 
+
+</div>
+</details>
+ 
+<details>
+<summary>가계부 상세 조회</summary>
+<div markdown="1">
+
+ #### 상세 조회 출력하기
+ 
+ ##### AccountBookController.class
+ ~~~
+      // 가계부 상세조회
+    @GetMapping(value = "/detail/{id}")
+    public Optional<AccountBook> AccountBookDetail(@PathVariable("id") Long id){
+
+        Optional<AccountBook> detail = accountBookService.detail(id);
+
+        return detail;
+    }
+ ~~~
+ + @PathVariable() 어노테이션 선언하여 요청 값을 받아 매개 변수 저장합니다.
+ + AccountBookService.class 상세 조회를 하기 위해서  detail() 메소드에 id 값을 보냅니다.
+ 
+ ##### AccountBookService.class
+ ~~~
+     public Optional<AccountBook> detail(Long id) {
+        Optional<AccountBook> detail = accountBookRepository.findById(id);
+
+        return detail;
+    }
+ ~~~
+ + id 값을 받아 findById()메소드에 넣어 조회를 출력합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194912451-dedbcb7a-0622-4796-ba94-8a74f8421e06.png" width="" height="100px"><br>
+ + URL 자원을 통해서 id 값을 요청합니다.
+ 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194912570-d6d22a24-c80b-4321-8745-54f991168aee.png" width="700px" height="200px"><br>
+ + id 값을 받아 조회가 잘 출력되는 것을 확인하였습니다.
+
+</div>
+</details>
+
+<details>
+<summary>가계부 수정하기</summary>
+<div markdown="1">
+
+
+ #### 수정하여 출력하기
+ 
+##### AccountBookController.class
+~~~
+    // 가계부 수정하기
+    @PutMapping(value = "/update")
+    public AccountBook AccountBookUpdate(@ModelAttribute AccountBook accountBook){
+
+        AccountBook update = accountBookService.update(accountBook);
+
+        return update;
+    }
+~~~  
++ @ModelAttribute 어노테이션 선언하여 수정할 값을 받아 매개변수에 저장합니다.
++ 매개변수 값을 AccountBookService 클래스 update 메소드에 보냅니다.
+
+##### AccountBookService.class
+~~~
+   public AccountBook update(AccountBook accountBook) {
+
+        AccountBook update = accountBookRepository.save(accountBook);
+
+        return update;
+    }
+~~~
++ 매개변수 값을 받아 save() 메소드에 수정할 값을 넣어 저장합니다.
+
+ <img src="https://user-images.githubusercontent.com/58936137/194915250-cc251b43-2345-495f-b098-72a4353e025e.png" width="" height="100px"><br>
+ + URL 자원을 통해서 수정할 값을 요청합니다.
+ 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194915368-94af6aa5-1fc8-4378-8b04-04c50ae2e8a0.png" width="700px" height="200px"><br>
+ + 목록을 확인하면 잘 수정되는 것을 확인하였습니다.
 
 
 </div>
 </details>
+
+<details>
+<summary>가계부 삭제하기</summary>
+<div markdown="1">
+
+
+ #### 삭제하여 출력하기
+ 
+##### AccountBookController.class
+~~~
+     // 가계부 삭제하기
+    @DeleteMapping(value = "/delete/{id}")
+    public Optional<AccountBook> AccountBookDelete(@PathVariable("id") Long id){
+
+        Optional<AccountBook> delete = accountBookService.delete(id);
+
+        return delete;
+    }
+~~~  
+ + @PathVariable() 어노테이션 선언하여 요청 값을 받아 매개 변수 저장합니다.
+ + AccountBookService.class delete() 메소드에 id 값을 보냅니다.
+##### AccountBookService.class
+~~~
+     public Optional<AccountBook> delete(Long id){
+
+        Optional<AccountBook> delete = accountBookRepository.deleteAllById(id);
+
+        return delete;
+    }
+~~~
++ id 값을 받아 deleteAllById() 메소드 넣어 삭제 처리를 진행합니다.
+
+<img src="https://user-images.githubusercontent.com/58936137/194916892-19020a75-0d3b-4f41-bc7d-2818dd04a044.png" width="" height="100px"><br>
++ URL 자원을 통해서 id 값을 요청하여 삭제 처리를 합니다.
+ 
+<br>
+ 
+<img src="https://user-images.githubusercontent.com/58936137/194917185-f7b7fa7b-14d9-4aa6-bea0-144a7ff62354.png" width="700px" height="250px"><br>
++ 목록을 확인하면 삭제가 잘 처리가 되는 것을 확인하였습니다. 
+ 
+
+</div>
+</details>
+
   
 
 

@@ -19,6 +19,7 @@
 
 ### 4. IDE 개발환경
 + <a href="https://www.jetbrains.com/ko-kr/idea/">InteliJ IDEA </a>
++ <a href="https://www.postman.com/">Postman</a>
 
 ### 5. MSA 아키텍처
 > MSA(Micro Service Architecture)이란 하나의 애플리케이션에 담아져 있는 서버를 작은 컴포넌트 별로 쪼개어 관리하는 아키텍처입니다. 많은 사용자들이 하나의 서버에 대용량 트래픽 발생으로 장애가 생기기 때문에 이를 대처하기 위해서 로드밸런싱으로 서버를 분산하여 관리합니다. 

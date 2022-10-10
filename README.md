@@ -716,7 +716,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
 <summary>가계부 조회</summary>
 <div markdown="1">
 
- #### 1. Controller, Service, Repository 코드작성
+ #### 조회 출력하기
  
  ##### AccountBookController.class
  ~~~
@@ -746,6 +746,46 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
 <img src="https://user-images.githubusercontent.com/58936137/194908961-ccc6dfc3-3d39-4432-88cc-5e5bb2c4a843.png" width="700px" height="300px"><br>
 + 전체 출력이 잘 되는 것을 확인할 수 있습니다.
  
+
+</div>
+</details>
+ 
+<details>
+<summary>가계부 상세 조회</summary>
+<div markdown="1">
+
+ #### 상세 조회 출력하기
+ 
+ ##### AccountBookController.class
+ ~~~
+      // 가계부 상세조회
+    @GetMapping(value = "/detail/{id}")
+    public Optional<AccountBook> AccountBookDetail(@PathVariable("id") Long id){
+
+        Optional<AccountBook> detail = accountBookService.detail(id);
+
+        return detail;
+    }
+ ~~~
+ + @PathVariable() 어노테이션 선언하여 요청 값을 받아 매개 변수 저장합니다.
+ + AccountBookService 클래스에 상세 조회를 하기 위해서  detail() 메소드에 id 값을 보냅니다.
+ 
+ ##### AccountBookService.class
+ ~~~
+     public Optional<AccountBook> detail(Long id) {
+        Optional<AccountBook> detail = accountBookRepository.findById(id);
+
+        return detail;
+    }
+ ~~~
+ + 매개 변수 값을 받습니다.
+ + JpaRepository findById()메소드에 id 값을 넣습니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194912451-dedbcb7a-0622-4796-ba94-8a74f8421e06.png" width="" height="100px"><br>
+ + URL 자원을 통해서 id 값을 요청합니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194912570-d6d22a24-c80b-4321-8745-54f991168aee.png" width="700px" height="300px"><br>
+ + id 값을 받아 조회가 잘 출력되는 것을 확인할 수 있습니다.
 
 </div>
 </details>

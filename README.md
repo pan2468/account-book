@@ -34,7 +34,7 @@
  
 - 해결 원인: HelloController 메소드와 HelloControllerTest 메소드와 값이 일치하지 않아 발생
  
- #### 기존코드 
+ #### 기존 코드 
  ~~~
  HelloController.class
     
@@ -59,7 +59,7 @@
  
  ~~~
  
- #### 개선코드
+ #### 개선 코드
  ~~~
  HelloController.class
     
@@ -127,7 +127,7 @@ spring.datasource.password=1234
 - "error": "Unsupported Media Type"
 - 해결원인: 기존에 controller 서버에서 @RestController 선언하였기 때문에 @Responseody return 반환으로 오류 발생
 
-#### 기존코드
+#### 기존 코드
 ~~~
     @PostMapping(value = "/account/add")
     public AccountBook saveAccount(@ResponseBody AccountBook accountBook) { // @ResponseBody 어노테이션 오류  
@@ -137,7 +137,7 @@ spring.datasource.password=1234
 ~~~
 + @RestController 어노테이션 선언하였기 때문에 @ResponseBody 선언 오류가 발생합니다.
 
-#### 개선코드
+#### 개선 코드
 ~~~
     @PostMapping(value = "/account/add")
     public AccountBook saveAccount(@ModelAttribute AccountBook accountBook) { // @ModelAttribute 변경
@@ -223,9 +223,10 @@ spring.datasource.password=1234
 <div markdown="1">
  
 - java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+- 해결 원인: 메소드 선언부에 List 컬렉션을 선언하지 않아 오류 발생 
 
-#### 기존코드
-##### 
+#### 기존 코드
+##### AccountBookController.class
 ~~~
 // 가계부 조회
 @GetMapping(value = "/account/list")
@@ -236,6 +237,23 @@ public AccountBook AccountBookList(AccountBook accountBook){
    return list.get(0);
 }
 ~~~
+
+#### 개선 코드
+##### AccountBookController.class
+~~~
+    // 가계부 조회
+    @GetMapping(value = "/account/list")
+    public List<AccountBook> AccountBookList(@ModelAttribute AccountBook accountBook){ // List 컬렉션 프레임워크와 @ModelAttribute 어노테이션 선언 후 개선
+
+        List<AccountBook> list = accountBookService.listAccount(accountBook);
+
+        return list;
+    }
+ ~~~
+ + 가계부에 List 목록 정보를 조회 하기위해서 메소드 선언부에 List 컬렉션으로 변경 후 개선을 하였습니다.
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194746464-bad5d555-367a-42bf-922d-83d9f00ee05f.png" height="250px">
+ 
 
 </div>
 </details>

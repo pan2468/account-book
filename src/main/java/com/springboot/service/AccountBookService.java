@@ -22,7 +22,7 @@ public class AccountBookService {
         return accountBook;
     }
 
-    public List<AccountBook> listAccount(AccountBook accountBook){
+    public List<AccountBook> listAccount(){
         List<AccountBook> accountBooks  = accountBookRepository.findAll();
 
         return accountBooks;

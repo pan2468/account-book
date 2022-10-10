@@ -27,9 +27,9 @@ public class AccountBookController {
 
     // 가계부 조회
     @GetMapping(value = "/list")
-    public List<AccountBook> AccountBookList(@ModelAttribute AccountBook accountBook){
+    public List<AccountBook> AccountBookList(){
 
-        List<AccountBook> list = accountBookService.listAccount(accountBook);
+        List<AccountBook> list = accountBookService.listAccount();
 
         return list;
     }
@@ -41,7 +41,7 @@ public class AccountBookController {
 
         return detail;
     }
-
+    // 가계부 수정하기
     @PutMapping(value = "/update")
     public AccountBook AccountBookUpdate(@ModelAttribute AccountBook accountBook){
 
@@ -50,6 +50,7 @@ public class AccountBookController {
         return update;
     }
 
+    // 가계부 삭제하기
     @DeleteMapping(value = "/delete/{id}")
     public Optional<AccountBook> AccountBookDelete(@PathVariable("id") Long id){
 

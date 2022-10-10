@@ -700,11 +700,11 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  
  #### 2. Postman 실행
  
- <img src="https://user-images.githubusercontent.com/58936137/194698166-8215146c-9e46-45b5-8414-ae8ae18a9be6.png" width="600px" height="300px">
+ <img src="https://user-images.githubusercontent.com/58936137/194908699-02b9732f-eb38-42e5-9dd6-2a49068ee89e.png" width="600px" height="300px">
  
  + URL 쿼리스트링에 값을 넣어 POST형식으로 보냅니다.
  
- <img src="https://user-images.githubusercontent.com/58936137/194698305-05c64232-9149-43e3-bfb2-cf13bc2053a8.png" width="600px" height="300px">
+ <img src="https://user-images.githubusercontent.com/58936137/194908961-ccc6dfc3-3d39-4432-88cc-5e5bb2c4a843.png" width="600px" height="300px">
  
  + Body > Pretty 에서 등록이 잘되는 것을 확인할 수 있습니다.
  

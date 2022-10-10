@@ -787,10 +787,73 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  <br>
  
  <img src="https://user-images.githubusercontent.com/58936137/194912570-d6d22a24-c80b-4321-8745-54f991168aee.png" width="700px" height="200px"><br>
- + id 값을 받아 조회가 잘 출력되는 것을 확인할 수 있습니다.
+ + id 값을 받아 조회가 잘 출력되는 것을 확인하였습니다.
 
 </div>
 </details>
+
+<details>
+<summary>가계부 수정하기</summary>
+<div markdown="1">
+
+
+ #### 수정하여 출력하기
+ 
+##### AccountBookController.class
+~~~
+    // 가계부 수정하기
+    @PutMapping(value = "/update")
+    public AccountBook AccountBookUpdate(@ModelAttribute AccountBook accountBook){
+
+        AccountBook update = accountBookService.update(accountBook);
+
+        return update;
+    }
+~~~  
++ @ModelAttribute 어노테이션 선언하여 수정할 값을 받아 매개변수에 저장합니다.
++ 매개변수 값을 AccountBookService 클래스 update 메소드에 보냅니다.
+
+##### AccountBookService.class
+~~~
+   public AccountBook update(AccountBook accountBook) {
+
+        AccountBook update = accountBookRepository.save(accountBook);
+
+        return update;
+    }
+~~~
++ 매개변수 값을 받습니다.
++ JpaRepository save() 메소드에 수정할 값을 넣어 저장합니다.
+
+ <img src="https://user-images.githubusercontent.com/58936137/194915250-cc251b43-2345-495f-b098-72a4353e025e.png" width="" height="100px"><br>
+ + URL 자원을 통해서 수정할 값을 요청합니다.
+ 
+ <br>
+ 
+ <img src="https://user-images.githubusercontent.com/58936137/194915368-94af6aa5-1fc8-4378-8b04-04c50ae2e8a0.png" width="700px" height="200px"><br>
+ + 목록을 확인하면 잘 수정되는 것을 확인하였습니다.
+
+
+</div>
+</details>
+
+<details>
+<summary>가계부 삭제하기</summary>
+<div markdown="1">
+
+
+ #### 삭제하여 출력하기
+ 
+##### AccountBookController.class
+~~~
+~~~  
+##### AccountBookService.class
+~~~
+~~~
+
+</div>
+</details>
+
   
 
 

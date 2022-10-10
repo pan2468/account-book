@@ -768,7 +768,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
     }
  ~~~
  + @PathVariable() 어노테이션 선언하여 요청 값을 받아 매개 변수 저장합니다.
- + AccountBookService 클래스에 상세 조회를 하기 위해서  detail() 메소드에 id 값을 보냅니다.
+ + AccountBookService.class 상세 조회를 하기 위해서  detail() 메소드에 id 값을 보냅니다.
  
  ##### AccountBookService.class
  ~~~
@@ -778,8 +778,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
         return detail;
     }
  ~~~
- + 매개 변수 값을 받습니다.
- + JpaRepository findById()메소드에 id 값을 넣습니다.
+ + id 값을 받아 findById()메소드에 넣어 조회를 출력합니다.
  
  <img src="https://user-images.githubusercontent.com/58936137/194912451-dedbcb7a-0622-4796-ba94-8a74f8421e06.png" width="" height="100px"><br>
  + URL 자원을 통해서 id 값을 요청합니다.
@@ -822,8 +821,7 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
         return update;
     }
 ~~~
-+ 매개변수 값을 받습니다.
-+ JpaRepository save() 메소드에 수정할 값을 넣어 저장합니다.
++ 매개변수 값을 받아 save() 메소드에 수정할 값을 넣어 저장합니다.
 
  <img src="https://user-images.githubusercontent.com/58936137/194915250-cc251b43-2345-495f-b098-72a4353e025e.png" width="" height="100px"><br>
  + URL 자원을 통해서 수정할 값을 요청합니다.
@@ -846,10 +844,36 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
  
 ##### AccountBookController.class
 ~~~
+     // 가계부 삭제하기
+    @DeleteMapping(value = "/delete/{id}")
+    public Optional<AccountBook> AccountBookDelete(@PathVariable("id") Long id){
+
+        Optional<AccountBook> delete = accountBookService.delete(id);
+
+        return delete;
+    }
 ~~~  
+ + @PathVariable() 어노테이션 선언하여 요청 값을 받아 매개 변수 저장합니다.
+ + AccountBookService.class delete() 메소드에 id 값을 보냅니다.
 ##### AccountBookService.class
 ~~~
+     public Optional<AccountBook> delete(Long id){
+
+        Optional<AccountBook> delete = accountBookRepository.deleteAllById(id);
+
+        return delete;
+    }
 ~~~
++ id 값을 받아 deleteAllById() 메소드 넣어 삭제 처리를 진행합니다.
+
+<img src="https://user-images.githubusercontent.com/58936137/194916892-19020a75-0d3b-4f41-bc7d-2818dd04a044.png" width="" height="100px"><br>
++ URL 자원을 통해서 id 값을 요청하여 삭제 처리를 합니다.
+ 
+<br>
+ 
+<img src="https://user-images.githubusercontent.com/58936137/194917185-f7b7fa7b-14d9-4aa6-bea0-144a7ff62354.png" width="700px" height="250px"><br>
++ 목록을 확인하면 삭제가 잘 처리가 되는 것을 확인하였습니다. 
+ 
 
 </div>
 </details>

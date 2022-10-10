@@ -23,7 +23,7 @@
 ### 5. MSA 아키텍처
 > MSA(Micro Service Architecture)이란 하나의 애플리케이션에 담아져 있는 서버를 작은 컴포넌트 별로 쪼개어 관리하는 아키텍처입니다. 많은 사용자들이 하나의 서버에 대용량 트래픽 발생으로 장애가 생기기 때문에 이를 대처하기 위해서 로드밸런싱으로 서버를 분산하여 관리합니다. 
 
-<img src="https://user-images.githubusercontent.com/58936137/194907324-23a280a4-cb7c-4077-885e-fd352e955a14.png" width="600px" height="350px">
+<img src="https://user-images.githubusercontent.com/58936137/194913580-9158fc4b-7aa1-4cc8-b814-92e00f8e266f.png" width="600px" height="350px">
 
 ### 6. 트러블슈팅 경험
 

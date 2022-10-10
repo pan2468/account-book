@@ -716,7 +716,36 @@ public interface AccountBookRepository extends JpaRepository<AccountBook, Long> 
 <summary>가계부 조회</summary>
 <div markdown="1">
 
+ #### 1. Controller, Service, Repository 코드작성
+ 
+ ##### AccountBookController.class
+ ~~~
+     // 가계부 조회
+    @GetMapping(value = "/list")
+    public List<AccountBook> AccountBookList(){
+        AccountBook accountBook = new AccountBook();   
+    
+        List<AccountBook> list = accountBookService.listAccount();
 
+        return list;
+    }
+
+ ~~~
+ + @GetMapping() URL 자원을 통해 목록 조회 값을 출력합니다. 
+ 
+ ##### AccountBookService.class
+ ~~~
+     public List<AccountBook> listAccount(){
+        List<AccountBook> accountBooks  = accountBookRepository.findAll();
+
+        return accountBooks;
+    }
+ ~~~
+ + JpaRepository findAll()메소드 이용해서 조회 값을 출력합니다.
+ 
+<img src="https://user-images.githubusercontent.com/58936137/194908961-ccc6dfc3-3d39-4432-88cc-5e5bb2c4a843.png" width="700px" height="300px"><br>
++ 전체 출력이 잘 되는 것을 확인할 수 있습니다.
+ 
 
 </div>
 </details>
